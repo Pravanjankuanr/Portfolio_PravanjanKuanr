@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <h1>Hi, I'm <span class="accent">Pravanjan Kuanr</span></h1>
+      <p class="lead">Data Analyst with expertise in <strong>Power BI</strong>, <strong>SQL</strong>, and <strong>Python</strong>.</p>
+      <div class="cta">
+        <a class="btn" href="{{ url_for('projects') }}">View Projects</a>
+        <a class="btn ghost" href="{{ url_for('contact') }}">Contact Me</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

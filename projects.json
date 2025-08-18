@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Sales Analytics Dashboard",
+    "description": "Interactive dashboard built with Power BI; automated refresh, row-level security, and DAX heavy lifting.",
+    "tech": ["Power BI", "SQL", "DAX"],
+    "image": "/static/img/powerbi.png",
+    "url": "https://github.com/Pravanjankuanr/Life-Insurance-Data-Analysis",
+    "featured": true
+  },
+  {
+    "title": "Flask + MySQL Admin",
+    "description": "Admin portal with auth, JWT sessions, and CRUD over MySQL for customer data.",
+    "tech": ["Python", "Flask", "MySQL"],
+    "image": "/static/img/flask-admin.png",
+    "url": "https://github.com/yourhandle/flask-admin",
+    "featured": true
+  },
+  {
+    "title": "NLP Resume Screener",
+    "description": "Text classification pipeline to rank resumes by job description match.",
+    "tech": ["Python", "scikit-learn", "NLP"],
+    "image": "/static/img/nlp.png",
+    "url": "https://github.com/yourhandle/nlp-resume-screener",
+    "featured": false
+  }
+]

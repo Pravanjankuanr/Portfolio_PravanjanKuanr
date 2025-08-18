@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="projects">
+  <div class="container">
+    <h2>My Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <h3>Sales Dashboard</h3>
+        <p>Built with Power BI to track KPIs and sales trends.</p>
+      </div>
+      <div class="project-card">
+  <img src="{{ url_for('static', filename='images/sales_dashboard.png') }}" alt="Sales Dashboard">
+  <h3>Sales Dashboard</h3>
+  <div class="tech-stack">
+  </div>
+  <p class="impact">📊 Improved decision-making by reducing</p>
+  <a href="https://app.powerbi.com/your-dashboard-link" target="_blank" class="btn">View Dashboard</a>
+  <a href="https://github.com/your-github-repo" target="_blank" class="btn secondary">GitHub</a>
+</div>
+
+      <div class="project-card">
+        <h3>SQL Data Pipeline</h3>
+        <p>Automated reporting system using SQL + Python.</p>
+      </div>
+      <div class="project-card">
+        <h3>Customer Insights</h3>
+        <p>Analyzed customer churn using Python & visualization.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
