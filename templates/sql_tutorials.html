@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="doc_content">
+  <div class="container">
+    <h2>SQL Tutorials</h2>
+    <p>Welcome to my SQL learning space. Here I share step-by-step tutorials with examples.</p>
+
+    <article class="doccontentbox">
+      <h3>1. Introduction to SQL</h3>
+      <p>SQL (Structured Query Language) is used to interact with relational databases.</p>
+      <pre><code>
+SELECT * FROM Customers;
+      </code></pre>
+    </article>
+
+    <article class="doccontentbox">
+      <h3>2. Filtering Data</h3>
+      <p>You can filter rows using the <code>WHERE</code> clause:</p>
+      <pre><code>
+SELECT * FROM Customers
+WHERE Country = 'India';
+      </code></pre>
+    </article>
+
+    <article class="doccontentbox">
+      <h3>3. Joins in SQL</h3>
+      <p>Joins are used to combine rows from multiple tables:</p>
+      <pre><code>
+SELECT Orders.OrderID, Customers.CustomerName
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+      </code></pre>
+    </article>
+  </div>
+</section>
+{% endblock %}

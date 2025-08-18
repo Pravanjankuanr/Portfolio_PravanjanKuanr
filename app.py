@@ -50,6 +50,14 @@ def home():
 def docs():
     return render_template("docs.html")
 
+@app.route("/docs/sql")
+def sql_tutorials():
+    return render_template("sql_tutorials.html")
+
+@app.route("/docs/insuranceapp")
+def insurance_app():
+    return render_template("insurance_app.html")
+
 @app.route('/projects')
 def projects():
     with open(PROJECTS_PATH, 'r', encoding='utf-8') as f:
