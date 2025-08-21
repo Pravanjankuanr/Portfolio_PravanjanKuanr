@@ -1,0 +1,76 @@
+{% extends 'base.html' %} {% block content %}
+<section class="doc_content">
+  <div class="container">
+    <h2>Git Tutorials</h2>
+
+    <article class="doccontentbox">
+      <h3>Namaste 🙏 and Welcome to Git Tutorials 🎉</h3>
+      <p>
+        This guide is your friendly companion for learning <b>Git & GitHub</b>.
+        Whether you’re just starting or brushing up on concepts, you’ll find
+        everything here explained step by step brewed with clarity
+      </p>
+    </article>
+
+    <article class="doccontentbox">
+      <h3>Git and GitHub</h3>
+      <p>
+        Let’s start with the foundation. Git is a version control system that
+        helps you keep track of changes in your files and collaborate with
+        others. It manages the history of your code and makes it easier to
+        combine updates from different people working on the same project. At
+        this stage, terms like version control, branches, or merges may sound
+        new, but don’t worry—we’ll gradually break them down in this tutorial.
+      </p>
+      <h4>Git vs. GitHub</h4>
+      <p>Although they sound similar, Git and GitHub are not the same thing.</p>
+      <h4>What is Version Control?</h4>
+      <p>
+        A version control system (VCS) keeps track of every change you make in
+        your project. It allows you to go back to earlier versions if needed and
+        makes collaboration simple. You can think of it like checkpoints in a
+        video game—you can always return to a saved state if something goes
+        wrong.
+      </p>
+      <p>
+        Before Git, developers relied on older tools like SCCS (Source Code
+        Control System). SCCS was expensive and hard to use. Later, other
+        systems like CVS, Subversion (SVN), and Perforce were created. Git was
+        designed to be faster, more flexible, and accessible for everyone—and
+        that’s why it became the industry standard.
+      </p>
+    </article>
+
+    <article class="doccontentbox">
+      <h3>Terminology</h3>
+      <p></p>
+      <h4>Check git version</h4>
+      <pre><code>
+        git --version
+      </code></pre>
+      <h4>Repository</h4>
+      <p>
+        A repository is a special folder that stores your code and project
+        files. It can have files, folders, and even other repositories inside
+        it. Think of it as a container that keeps everything for your project in
+        one place.
+      </p>
+      <p>
+        Software is installed on your system, but Git tracks changes in a
+        specific folder. To check the current state of your repository, run this
+        command:
+      </p>
+    </article>
+
+    <article class="doccontentbox">
+      <h3>git rm -r .</h3>
+      <p>Joins are used to combine rows from multiple tables:</p>
+      <pre><code>
+SELECT Orders.OrderID, Customers.CustomerName
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+      </code></pre>
+    </article>
+  </div>
+</section>
+{% endblock %}

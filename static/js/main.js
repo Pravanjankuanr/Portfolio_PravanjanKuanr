@@ -10,5 +10,24 @@ document.addEventListener("DOMContentLoaded", () => {
       form.reset();
     });
   }
-  
+});
+
+// copy button
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("pre code").forEach((codeBlock) => {
+    const button = document.createElement("button");
+    button.className = "copy-btn";
+    button.innerText = "📋";
+
+    button.addEventListener("click", () => {
+      navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+        button.innerText = "✅";
+        setTimeout(() => button.innerText = "📋", 1500);
+      });
+    });
+
+    const pre = codeBlock.parentNode;
+    pre.style.position = "relative"; // ensure positioning works
+    pre.appendChild(button);
+  });
 });

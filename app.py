@@ -58,6 +58,10 @@ def sql_tutorials():
 def insurance_app():
     return render_template("insurance_app.html")
 
+@app.route("/docs/git")
+def git_tutorials():
+    return render_template("git_tutorials.html")
+
 @app.route('/projects')
 def projects():
     with open(PROJECTS_PATH, 'r', encoding='utf-8') as f:
