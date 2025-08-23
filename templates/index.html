@@ -1,16 +1,14 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <!-- ========== Hero Section ========== -->
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <h1>
-        Hi, I'm <span class="accent typing">Pravanjan Kuanr</span>
-      </h1>
+      <h1>Hi, I'm <span class="accent typing">Pravanjan Kuanr</span></h1>
       <p class="lead">
-        Data Analyst with expertise in 
-        <strong>Power BI</strong>, <strong>SQL</strong>, and <strong>Python</strong>.
+        Data Analyst with expertise in
+        <strong>Power BI</strong>, <strong>SQL</strong>, and
+        <strong>Python</strong>.
       </p>
       <div class="cta">
         <a href="{{ url_for('projects') }}" class="btn">View Projects</a>
@@ -25,14 +23,16 @@
   <div class="container about-grid">
     <div class="roadmap">
       <div class="timeline">
-
         <div class="timeline-item left">
           <span class="timeline-dot"></span>
           <div class="timeline-content">
-            <h3>Childhood</h3>
+            <h3>Early Interest</h3>
             <p>
-              I grew up with a curiosity for technology and problem-solving. 
-              From a young age, I enjoyed exploring gadgets and understanding how things work.
+              <i>
+                “I grew up with a curiosity for technology and problem-solving,
+                always eager to explore gadgets and understand how things
+                worked.”
+              </i>
             </p>
           </div>
         </div>
@@ -40,10 +40,11 @@
         <div class="timeline-item right">
           <span class="timeline-dot"></span>
           <div class="timeline-content">
-            <h3>Schooling</h3>
-            <p>
-              During school, I developed strong analytical skills and a passion for mathematics, 
-              which later helped me in data analytics.
+            <h3>Education</h3>
+            <p><strong>Royal Secondary High School</strong>
+            <i>2019</i>
+            <strong>Fakir Mohan University</strong>
+            <i>2022</i>
             </p>
           </div>
         </div>
@@ -53,12 +54,23 @@
           <div class="timeline-content">
             <h3>Career</h3>
             <p>
-              As a Data Analyst, I now work with SQL, Power BI, and Python to 
-              transform raw data into meaningful insights.
+              icici
             </p>
           </div>
         </div>
 
+        <div class="timeline-item right">
+          <span class="timeline-dot"></span>
+          <div class="timeline-content">
+            <h3>Future Vision</h3>
+            <p>
+              <i>
+                “I aim to continue growing in advanced analytics and machine
+                learning, driving impactful business decisions with data.”
+              </i>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -69,7 +81,6 @@
   <div class="container">
     <h2>What I Do</h2>
     <div class="service-grid">
-
       <div class="card">
         <h3>Power BI Dashboards</h3>
         <p>Interactive dashboards that tell stories from data.</p>
@@ -87,7 +98,6 @@
         <p>Automation, data cleaning, and advanced analytics using Python.</p>
         <a href="{{ url_for('projects') }}" class="btn ghost">Learn More</a>
       </div>
-
     </div>
   </div>
 </section>
@@ -97,8 +107,14 @@
   <div class="container">
     <h2>Professional Experience</h2>
     <div class="client-logos">
-      <img src="{{ url_for('static', filename='images/icicilombardlogo.png') }}" alt="ICICI Lombard">
-      <img src="{{ url_for('static', filename='images/shriramlife.png') }}" alt="Shriram Life">
+      <img
+        src="{{ url_for('static', filename='images/icicilombardlogo.png') }}"
+        alt="ICICI Lombard"
+      />
+      <img
+        src="{{ url_for('static', filename='images/shriramlife.png') }}"
+        alt="Shriram Life"
+      />
     </div>
   </div>
 </section>
@@ -108,8 +124,8 @@
   <div class="container text-center">
     <h2>Let’s Work Together!</h2>
     <p>
-      If you’re looking for a data analyst to collaborate with, 
-      let’s connect and discuss your project.
+      If you’re looking for a data analyst to collaborate with, let’s connect
+      and discuss your project.
     </p>
     <a href="{{ url_for('contact') }}" class="btn">Get in Touch</a>
   </div>

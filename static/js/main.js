@@ -16,86 +16,104 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ========================
      Copy Button for Code Blocks
   ======================== */
-  document.querySelectorAll("pre code").forEach((codeBlock) => {
-    const button = document.createElement("button");
-    button.className = "copy-btn";
-    button.innerText = "📋";
+document.querySelectorAll("pre code").forEach((codeBlock) => {
+  const button = document.createElement("button");
+  button.className = "copy-btn";
+  button.innerHTML = '<i class="fa-solid fa-copy"></i>';
 
-    button.addEventListener("click", () => {
-      navigator.clipboard.writeText(codeBlock.innerText).then(() => {
-        button.innerText = "✅";
-        setTimeout(() => (button.innerText = "📋"), 1500);
-      });
+  button.addEventListener("click", () => {
+    navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+      // Show "Copied!" text temporarily
+      button.innerHTML = '<span class="copied-text">Copied!</span>';
+      setTimeout(() => {
+        button.innerHTML = '<i class="fa-solid fa-copy"></i>';
+      }, 1500);
     });
-
-    const pre = codeBlock.parentNode;
-    pre.style.position = "relative"; // ensure button positioning
-    pre.appendChild(button);
   });
 
-  /* ========================
-     Scroll Animation (Timeline Items)
-  ======================== */
-  const items = document.querySelectorAll(".timeline-item");
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-        }
-      });
-    },
-    { threshold: 0.2 }
-  );
-
-  items.forEach((item) => observer.observe(item));
+  const pre = codeBlock.parentNode;
+  pre.style.position = "relative";
+  pre.appendChild(button);
 });
 
-  // const items = document.querySelectorAll(".timeline-item");
-
-  // const observer = new IntersectionObserver(entries => {
-  //   entries.forEach(entry => {
-  //     if (entry.isIntersecting) {
-  //       entry.target.classList.add("show");
-  //     }
-  //   });
-  // }, { threshold: 0.2 });
-
-  // items.forEach(item => observer.observe(item));
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const timeline = document.querySelector(".timeline");
+const timeline = document.querySelector(".timeline");
+if (timeline) {
   const items = document.querySelectorAll(".timeline-item");
-  const progressLine = document.querySelector(".timeline::after"); // pseudo can't be selected directly
 
-  // Instead, create a real progress line element
+  // Create real progress line
   const progress = document.createElement("div");
   progress.classList.add("progress-line");
   timeline.appendChild(progress);
 
-  function animateTimeline() {
-    let windowHeight = window.innerHeight;
-    let timelineTop = timeline.getBoundingClientRect().top;
-    let timelineHeight = timeline.offsetHeight;
+function animateTimeline() {
+  let windowHeight = window.innerHeight;
+  let timelineTop = timeline.offsetTop;
+  let scrollMid = window.scrollY + windowHeight / 2;
 
-    // Calculate how far user scrolled into timeline
-    let scrollPos = windowHeight - timelineTop;
-    let progressHeight = Math.min(scrollPos, timelineHeight);
+  // Find last dot position (last item)
+  let lastItem = items[items.length - 1];
+  let maxProgress = lastItem.offsetTop;
 
-    progress.style.height = progressHeight + "px";
+  // Calculate progress relative to timeline
+  let progressHeight = 0;
+  if (scrollMid > timelineTop) {
+    progressHeight = Math.min(scrollMid - timelineTop, maxProgress);
+  }
 
-    // Reveal items when progress passes them
-    items.forEach(item => {
-      let itemPos = item.getBoundingClientRect().top;
-      if (itemPos < windowHeight - 100) {
-        item.classList.add("show");
+  progress.style.height = progressHeight + "px";
+
+  // Activate dots
+  items.forEach(item => {
+    let itemDotY = item.offsetTop;
+    if (progressHeight >= itemDotY) {
+      item.classList.add("active");
+    } else {
+      item.classList.remove("active");
+    }
+  });
+}
+
+  window.addEventListener("scroll", animateTimeline);
+  animateTimeline();
+}
+
+
+  /* ========================
+     ScrollSpy (Sidebar Nav)
+  ======================== */
+  const sections = document.querySelectorAll("article[id]");
+  const navLinks = document.querySelectorAll(".sidebar a");
+
+  function activateLink() {
+    let current = "";
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (window.scrollY >= sectionTop) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === "#" + current) {
+        link.classList.add("active");
       }
     });
   }
 
-  window.addEventListener("scroll", animateTimeline);
-  animateTimeline(); // run on load
+  window.addEventListener("scroll", activateLink);
+
+  /* ========================
+     Smooth Scroll (Sidebar)
+  ======================== */
+  document.querySelectorAll('.sidebar a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    });
+  });
 });
