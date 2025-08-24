@@ -23,6 +23,15 @@ SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 creds = Credentials.from_service_account_file("credentials.json", scopes=SCOPES)
 client = gspread.authorize(creds)
 
+if os.environ.get("GOOGLE_CREDENTIALS"):
+    # Running on Render (use env variable)
+    creds_dict = json.loads(os.environ["GOOGLE_CREDENTIALS"])
+    creds = Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
+else:
+    # Running locally (use file)
+    creds = Credentials.from_service_account_file("credentials.json", scopes=SCOPES)
+
+
 # Replace with your actual Google Sheet ID
 SHEET_ID = "1cPNlCLSnxR4eoqrUx23aCNclcjROd4JybB1SSHNS008"
 sheet = client.open_by_key(SHEET_ID).sheet1
