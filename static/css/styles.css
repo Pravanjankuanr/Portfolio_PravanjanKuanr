@@ -498,7 +498,7 @@ footer {
 .doccontentbox h3 {
   font-size: 1.6rem;
   margin-bottom: 1rem;
-  color: #007acc; /* blue accent */
+  color: #313d44; /* blue accent */
 }
 
 .doccontentbox h4 {
@@ -613,16 +613,15 @@ code {
   transition: all 0.1s ease-in-out;
 }
 
-
 /* ===== Main Content Area ===== */
 .content-area {
   flex: 1;
-  max-width: 800px;
+  max-width: 900px;
 }
 
 /* Reuse your earlier card styles */
 .doccontentbox {
-  background: white;
+  background: #e6f1ea;
   padding: 1.8rem 2rem;
   border-radius: 12px;
   margin-bottom: 2rem;
@@ -638,68 +637,6 @@ code {
   background: rgba(0, 122, 204, 0.1);
   border-radius: 4px;
 }
-
-.layout {
-  display: flex;
-  gap: 20px;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-}
-
-
-/* Sticky Navigation */
-.tutorial-nav {
-  position: sticky;
-  top: 100px; /* keeps it fixed while scrolling */
-  flex: 0 0 250px;
-  height: fit-content;
-  text-align: center;
-  /* background: #fff; */
-  padding: 20px;
-  /* border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1); */
-  margin-left: 100px;
-}
-
-.tutorial-nav h3 {
-  font-size: 18px;
-  font-weight: bold;
-  color: #0077ff;
-  margin-bottom: 15px;
-}
-
-.tutorial-nav ul {
-  list-style: none;
-  padding: 0;
-}
-
-.tutorial-nav ul li {
-  margin: 10px 0;
-}
-
-.tutorial-nav ul li a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  display: block;
-  padding: 8px 12px;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-}
-
-.tutorial-nav ul li a:hover,
-.tutorial-nav ul li a.active {
-  background: #0077ff;
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 119, 255, 0.4);
-}
-
-/* Main content */
-.tutorial-content {
-  flex: 1;
-  max-width: 600px;
-}
-
 
 
 /* =========================
