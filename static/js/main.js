@@ -1,17 +1,34 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Portfolio site loaded successfully!");
 
-  /* ========================
-     Contact Form Handler
-  ======================== */
-  const form = document.querySelector(".contact-form");
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      alert("Thank you for contacting me! I'll get back to you soon.");
+const form = document.querySelector(".contact-form");
+if (form) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // Show instant feedback
+    const btn = form.querySelector("button[type=submit]");
+    btn.disabled = true;
+    btn.innerText = "⏳ Sending...";
+
+    fetch("/contact", {
+      method: "POST",
+      body: new FormData(form)
+    })
+    .then(res => res.text())
+    .then(() => {
+      alert("✅ Thank you for contacting me! I'll get back to you soon.");
       form.reset();
+      btn.disabled = false;
+      btn.innerText = "Submit";
+    })
+    .catch(() => {
+      alert("❌ Something went wrong. Please try again.");
+      btn.disabled = false;
+      btn.innerText = "Submit";
     });
-  }
+  });
+}
 
   /* ========================
      Copy Button for Code Blocks
