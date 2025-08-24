@@ -20,9 +20,8 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret-change-me')
 
 # -------------------- Google Sheets Setup --------------------
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
-creds = Credentials.from_service_account_file("credentials.json", scopes=SCOPES)
-client = gspread.authorize(creds)
 
+# Get credentials (Render → from env, Local → from file)
 if os.environ.get("GOOGLE_CREDENTIALS"):
     # Running on Render (use env variable)
     creds_dict = json.loads(os.environ["GOOGLE_CREDENTIALS"])
@@ -31,10 +30,13 @@ else:
     # Running locally (use file)
     creds = Credentials.from_service_account_file("credentials.json", scopes=SCOPES)
 
+# Authorize client *after* creds is created
+client = gspread.authorize(creds)
 
 # Replace with your actual Google Sheet ID
 SHEET_ID = "1cPNlCLSnxR4eoqrUx23aCNclcjROd4JybB1SSHNS008"
 sheet = client.open_by_key(SHEET_ID).sheet1
+
 
 # -------------------- Email Setup --------------------
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
