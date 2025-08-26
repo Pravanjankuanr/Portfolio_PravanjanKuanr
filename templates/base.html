@@ -1,32 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pravanjan Kuanr | Portfolio</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-  <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
-</head>
-<body>
-  <header>
-    
-    <nav class="navbar">
-      <h2 class="logo">Pravanjan Kuanr</h2>
-      <ul class="nav-links">
-        <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="{{ url_for('projects') }}">Projects</a></li>
-        <li><a href="{{ url_for('contact') }}">Contact</a></li>
-        <li><a href="{{ url_for('docs') }}">Docs</a></li>
-      </ul>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pravanjan Kuanr | Portfolio</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <h2 class="logo">Pravanjan Kuanr</h2>
 
-  <main>
-    {% block content %}{% endblock %}
-  </main>
+        <!-- Hamburger Button -->
+        <div class="menu-toggle" id="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
 
-  <footer>
-    <p>© 2025 Pravanjan Kuanr | Data Analyst Portfolio</p>
-  </footer>
-</body>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('projects') }}">Projects</a></li>
+          <li><a href="{{ url_for('contact') }}">Contact</a></li>
+          <li><a href="{{ url_for('docs') }}">Docs</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>{% block content %}{% endblock %}</main>
+
+    <footer>
+      <p>© 2025 Pravanjan Kuanr | Data Analyst Portfolio</p>
+    </footer>
+  </body>
 </html>

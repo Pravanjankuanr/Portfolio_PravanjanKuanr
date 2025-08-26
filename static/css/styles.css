@@ -32,20 +32,46 @@ h3 { font-size: 1.5rem; }
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  padding: 0.1rem 2rem;
+  padding: 0.5rem 2rem;
   background: #eeeeee;
+  position: relative;
+  z-index: 1000;
 }
-.navbar .logo { font-size: 1.5rem; color: #191919; }
 
+.navbar .logo {
+  font-size: 1.5rem;
+  color: #191919;
+}
+
+/* Menu Toggle (Hamburger) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  width: 30px;
+  height: 25px;
+  gap: 5px;
+  z-index: 1001;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: #191919;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Links (Desktop) */
 .nav-links {
   list-style: none;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   gap: 1rem;
   padding: 0;
 }
+
 .nav-links a {
   color: #191919;
   text-decoration: none;
@@ -53,7 +79,69 @@ h3 { font-size: 1.5rem; }
   font-size: 0.9rem;
   transition: color 0.3s;
 }
-.nav-links a:hover { color: #f39c12; }
+
+.nav-links a:hover {
+  color: #f39c12;
+}
+
+/* =========================
+   Responsive (Mobile)
+========================= */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* Sidebar menu */
+  .nav-links {
+    position: fixed;
+    top: 60px; /* same as navbar height */
+    right: -250px; /* hidden off screen */
+    height: 100vh;
+    width: 200px;
+    background: #fff;
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
+    z-index: 999;
+  }
+
+  /* Active (slide in) */
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links a {
+    font-size: 1.1rem;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+
+  .nav-links a:hover {
+    background: #f39c12;
+    color: white;
+  }
+
+  /* Hero text (example adjustment) */
+  .hero h1 {
+    font-size: 1.8rem;
+    white-space: normal;
+  }
+}
+
+/* Hamburger Animation */
+.menu-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
 
 /* =========================
    Hero Section
