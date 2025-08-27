@@ -136,17 +136,45 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /* ========================
-     Hamburger Menu
-  ======================== */
-  const menuToggle = document.querySelector(".menu-toggle");
-  const navMenu = document.querySelector(".nav-links");
+/* ========================
+   MAIN NAVBAR HAMBURGER
+======================== */
+const menuToggle = document.querySelector(".menu-toggle");
+const navMenu = document.querySelector(".nav-links");
 
-  if (menuToggle && navMenu) {
-    menuToggle.addEventListener("click", () => {
-      menuToggle.classList.toggle("open");
-      navMenu.classList.toggle("active");
-    });
-  }
+if (menuToggle) {
+  menuToggle.addEventListener("click", () => {
+    menuToggle.classList.toggle("open");
+    if (navMenu) navMenu.classList.toggle("active");
+  });
+}
+
+
+/* ========================
+   DOCS FLOATING HAMBURGER
+======================== */
+const hamburgerBtn = document.getElementById("hamburgerBtn");
+const docSidebar = document.getElementById("docSidebar");
+const docOverlay = document.querySelector(".sidebar-overlay"); // renamed to avoid confusion
+
+if (hamburgerBtn) {
+  hamburgerBtn.addEventListener("click", () => {
+    hamburgerBtn.classList.toggle("active");
+    if (docSidebar && docOverlay) {
+      docSidebar.classList.toggle("active");
+      docOverlay.classList.toggle("show");
+    }
+  });
+}
+
+// Close sidebar when clicking docs overlay
+if (docOverlay) {
+  docOverlay.addEventListener("click", () => {
+    if (docSidebar) docSidebar.classList.remove("active");
+    docOverlay.classList.remove("show");
+    hamburgerBtn.classList.remove("active");
+  });
+}
+
 
 }); // End Line

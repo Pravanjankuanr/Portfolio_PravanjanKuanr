@@ -749,6 +749,97 @@ pre code {
 
 
 /* =========================
+   Docs Layout Responsive
+========================= */
+@media (max-width: 768px) {
+  .doc-layout {
+    flex-direction: column;
+  }
+
+  /* Sidebar as a sliding drawer */
+  .sidebar {
+    position: fixed;
+    top: 60px;                /* same as navbar height */
+    left: -260px;             /* hidden off-screen */
+    width: 240px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.75); /* 🔥 more transparent */
+    backdrop-filter: blur(16px);           /* 🔥 stronger blur for glass effect */
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 2px 0 15px rgba(0,0,0,0.25);
+    border-radius: 12px;      
+    transition: left 0.3s ease;
+    z-index: 1001;            /* above overlay */
+    overflow-y: auto;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  /* Overlay (dark background behind sidebar) */
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45); /* slightly darker for contrast */
+    z-index: 1000; /* below sidebar */
+  }
+
+  .sidebar-overlay.show {
+    display: block;
+  }
+
+  /* 🔥 Floating Hamburger Button (Bottom Left) */
+  .hamburger-btn {
+    position: fixed;
+    bottom: 20px;          
+    left: 20px;            
+    width: 52px;
+    height: 52px;
+    background: rgba(255,255,255,0.9); /* slightly transparent */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1100; /* 🔥 always above sidebar & overlay */
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .hamburger-btn:hover {
+    background: rgba(255,255,255,1);
+    transform: scale(1.05); /* subtle hover */
+  }
+
+  /* Hamburger lines */
+  .hamburger-btn span {
+    width: 24px;
+    height: 3px;
+    background: #333;
+    margin: 4px 0;
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+
+  /* Animate into "X" when active */
+  .hamburger-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .hamburger-btn.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+}
+
+
+/* =========================
    Media Queries
 ========================= */
 @media (min-width: 768px) {

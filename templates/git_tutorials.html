@@ -1,8 +1,18 @@
 {% extends 'base.html' %} {% block content %}
 <section class="doc_content">
+  <!-- 🔥 Floating Hamburger -->
+  <div id="hamburgerBtn" class="hamburger-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- 🔥 Overlay for mobile -->
+  <div class="sidebar-overlay"></div>
+
   <div class="doc-layout">
     <!-- ===== Sidebar ===== -->
-    <aside class="sidebar">
+    <aside id="docSidebar" class="sidebar">
       <h3>On this page</h3>
       <nav>
         <ul>
