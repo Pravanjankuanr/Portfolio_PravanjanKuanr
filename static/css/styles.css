@@ -236,7 +236,7 @@ p {font-size: 16px;}
 }
 
 /* =========================
-   About Section + Timeline
+   About Section
 ========================= */
 .about {
   padding: 60px 20px;
@@ -248,9 +248,14 @@ p {font-size: 16px;}
   justify-content: center;
   gap: 50px;
 }
-.about-content { flex: 1; text-align: left; }
+.about-content {
+  flex: 1;
+  text-align: left;
+}
 
-/* Timeline Container */
+/* =========================
+   Timeline Base
+========================= */
 .timeline {
   position: relative;
   max-width: 800px;
@@ -262,15 +267,29 @@ p {font-size: 16px;}
 .timeline::before {
   content: '';
   position: absolute;
-  top: 50px;         
-  bottom: 180px;     
+  top: 50px;
+  bottom: 180px;
   left: 50%;
   transform: translateX(-50%);
   width: 6px;
   background: #803ccf;
 }
 
-/* Timeline Items */
+/* Progress Line (dynamic) */
+.progress-line {
+  position: absolute;
+  top: 50px; /* same as .timeline::before */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 0; /* grows with JS */
+  border-radius: 3px;
+  z-index: 0;
+}
+
+/* =========================
+   Timeline Items
+========================= */
 .timeline-item {
   position: relative;
   width: 50%;
@@ -289,6 +308,7 @@ p {font-size: 16px;}
   left: 50%;
 }
 
+/* Timeline Content */
 .timeline-content {
   background: #fff;
   padding: 20px;
@@ -300,19 +320,19 @@ p {font-size: 16px;}
   transform: translateY(30px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
+
 .timeline-item.active .timeline-content {
   opacity: 1;
   transform: translateY(0);
 }
+
 .timeline-item:nth-child(1).active .timeline-content { transition-delay: 0.1s; }
 .timeline-item:nth-child(2).active .timeline-content { transition-delay: 0.2s; }
 .timeline-item:nth-child(3).active .timeline-content { transition-delay: 0.3s; }
 .timeline-item:nth-child(4).active .timeline-content { transition-delay: 0.4s; }
 .timeline-item:nth-child(5).active .timeline-content { transition-delay: 0.5s; }
-/* add more if you have more items */
 
-
-/* Timeline Dots */
+/* Dots */
 .timeline-item::before {
   content: '';
   position: absolute;
@@ -330,12 +350,10 @@ p {font-size: 16px;}
 .timeline-item.left::before { right: -12px; }
 .timeline-item.right::before { left: -12px; }
 
-/* First dot at very top */
 .timeline-item:first-child::before {
   top: 0;
   transform: translateY(0);
 }
-/* Last dot at very bottom */
 .timeline-item:last-child::before {
   top: auto;
   bottom: 0;
@@ -347,31 +365,68 @@ p {font-size: 16px;}
   box-shadow: 0 0 10px #a86dff, 0 0 20px #cbb5f8;
 }
 
-/* Mobile */
+/* =========================
+   Responsive (Mobile)
+========================= */
 @media (max-width: 768px) {
-  .timeline::before { left: 20px; transform: none; }
-  .timeline-item {
-    width: 100%;
-    padding-left: 50px;
-    text-align: left !important;
+  .timeline {
+    padding-left: 0;
   }
-  .timeline-item.left, .timeline-item.right { left: 0; }
-  .timeline-item::before { left: 15px; right: auto; }
-}
+  .timeline::before{
+    bottom: 32%;
+  }
 
-/* Progress Line (dynamic) */
-.progress-line {
-  position: absolute;
-  top: 50px;     /* same as .timeline::before top */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 6px;
-  background: linear-gradient(to bottom, #803ccf, #a86dff);
-  height: 0; /* starts at 0, JS will grow it */
-  border-radius: 3px;
-  z-index: 1; /* sits below dots */
-}
 
+  .timeline::before,
+  .progress-line {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .timeline-item {
+    width: 50%;   /* split screen for left/right */
+    padding: 40px 0;
+    position: relative;
+  }
+
+
+  /* ✅ Dots always centered on the vertical line */
+  .timeline-item::before {
+    transform: translate(-5%, -100%);
+    top: 0;
+  }
+
+  .timeline-content {
+    max-width: 90%;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    position: relative;
+    top: 20px;
+  }
+
+  .timeline-content h3 {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .timeline-content p {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  /* ✅ Place left items on left side */
+  .timeline-item.left {
+    left: 0;
+    text-align: right;
+  }
+
+  /* ✅ Place right items on right side */
+  .timeline-item.right {
+    left: 50%;
+    text-align: left;
+  }
+}
 
 /* =========================
    Docs Section

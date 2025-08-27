@@ -62,40 +62,60 @@ document.addEventListener("DOMContentLoaded", () => {
      Progress Bar Home Page
   ======================== */
   const timeline = document.querySelector(".timeline");
-  if (timeline) {
-    const items = document.querySelectorAll(".timeline-item");
-    const progress = document.createElement("div");
-    progress.classList.add("progress-line");
-    timeline.appendChild(progress);
+if (timeline) {
+  const items = document.querySelectorAll(".timeline-item");
+  const progress = document.createElement("div");
+  progress.classList.add("progress-line");
+  timeline.appendChild(progress);
 
-    function animateTimeline() {
-      let windowHeight = window.innerHeight;
-      let timelineTop = timeline.offsetTop;
-      let scrollMid = window.scrollY + windowHeight / 2;
+  const DOT_RADIUS = 10; // since your ::before dot is 20px
 
-      let lastItem = items[items.length - 1];
-      let maxProgress = lastItem.offsetTop;
+  function animateTimeline() {
+    let windowHeight = window.innerHeight;
+    let scrollMid = window.scrollY + windowHeight / 2;
 
-      let progressHeight = 0;
-      if (scrollMid > timelineTop) {
-        progressHeight = Math.min(scrollMid - timelineTop, maxProgress);
-      }
+    // Timeline bounding box
+    let timelineRect = timeline.getBoundingClientRect();
+    let timelineTop = window.scrollY + timelineRect.top;
 
-      progress.style.height = progressHeight + "px";
+    // Last item (so progress bar doesn't overshoot)
+    let lastItem = items[items.length - 1];
+    let lastItemRect = lastItem.getBoundingClientRect();
+    let lastItemDot =
+      window.scrollY +
+      lastItemRect.top +
+      lastItemRect.height / 2 -
+      timelineTop -
+      DOT_RADIUS;
 
-      items.forEach((item) => {
-        let itemDotY = item.offsetTop;
-        if (progressHeight >= itemDotY) {
-          item.classList.add("active");
-        } else {
-          item.classList.remove("active");
-        }
-      });
+    // Progress height
+    let progressHeight = 0;
+    if (scrollMid > timelineTop) {
+      progressHeight = Math.min(scrollMid - timelineTop, lastItemDot);
     }
 
-    window.addEventListener("scroll", animateTimeline);
-    animateTimeline();
+    progress.style.height = progressHeight + "px";
+
+    // ✅ Trigger items when progress bar bottom reaches their dot
+    items.forEach((item) => {
+      let itemRect = item.getBoundingClientRect();
+      let itemDot =
+        window.scrollY +
+        itemRect.top +
+        itemRect.height / 2 -
+        timelineTop;
+
+      if (progressHeight >= itemDot - DOT_RADIUS) {
+        item.classList.add("active"); // box appears
+      } else {
+        item.classList.remove("active");
+      }
+    });
   }
+
+  window.addEventListener("scroll", animateTimeline);
+  animateTimeline();
+}
 
   /* ========================
      Scroll Spy (Sidebar Doc Content)
