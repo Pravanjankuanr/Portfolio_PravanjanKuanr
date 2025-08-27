@@ -24,7 +24,7 @@ h1, h2, h3 {
 h1 { font-size: 2.5rem; }
 h2 { font-size: 2rem; }
 h3 { font-size: 1.5rem; }
-
+p {font-size: 16px;}
 /* =========================
    Navbar
 ========================= */
@@ -417,7 +417,7 @@ h3 { font-size: 1.5rem; }
 .doc-card:hover::before { opacity: 1; }
 .doc-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px rgba(252, 243, 243, 0.15);
 }
 .doc-card h3 {
   font-size: 1.3rem;
@@ -554,7 +554,7 @@ footer {
 .doc_content {
   padding: 3rem 1rem;
   background: #f9fafb; /* light gray background */
-  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: 'Aptos', 'Cambria',Arial, sans-serif;
   color: #333;
   line-height: 1.6;
 }
@@ -584,7 +584,7 @@ footer {
 }
 
 .doccontentbox h3 {
-  font-size: 1.6rem;
+  font-size: 30px;
   margin-bottom: 1rem;
   color: #313d44; /* blue accent */
 }
@@ -595,26 +595,46 @@ footer {
   color: #444;
 }
 
-
 /* ====== Paragraphs ====== */
 .doccontentbox p {
   margin-bottom: 1rem;
-  font-size: 1rem;
+  font-size: 20px;
+}
+
+.doccontentbox b {
+  margin-bottom: 1rem;
+  font-size: 21px;
+}
+
+.doccontentbox span{
+    font-size: 18px;
+}
+
+.doccontentbox .run-guide{
+    font-size: 15px;
 }
 
 /* ====== Code Blocks ====== */
 pre {
   background: #1e1e1e;
   color: #e5e5e5;
-  padding: 1rem;
+  padding: 8px 15px;      /* balanced top/bottom + left/right */
+  margin: 0 0 1rem 0;     /* small bottom spacing */
   border-radius: 8px;
-  overflow-x: auto;
+  overflow-x: auto;       /* only scroll if needed */
   font-size: 0.95rem;
+  line-height: 3;
+  white-space: pre;       /* respect spacing */
 }
 
-code {
+pre code {
   font-family: "Fira Code", monospace;
+  margin: 0;
+  padding: 0;
+  display: block;         /* ensures alignment */
+  white-space: pre;       /* avoid collapsing spaces */
 }
+
 
 .copy-btn {
   position: absolute;
@@ -623,7 +643,7 @@ code {
   background: #2d2d2d;
   border: 1px solid #444;
   border-radius: 6px;
-  padding: 6px 10px;
+  padding: 4px 8px;
   cursor: pointer;
   color: #bbb;
   font-size: 14px;
@@ -715,6 +735,7 @@ code {
   margin-bottom: 2rem;
   box-shadow: 0 4px 8px rgba(0,0,0,0.06);
 }
+
 
 /* Active link highlight */
 .sidebar a.active {
