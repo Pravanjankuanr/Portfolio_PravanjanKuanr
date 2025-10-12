@@ -513,6 +513,15 @@ p {font-size: 16px;}
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+.project-card {
+  text-align: center;
+}
+
+.project-card .btn {
+  display: inline-block;
+  margin-top: 10px;
+}
+
 /* =========================
    Contact
 ========================= */
