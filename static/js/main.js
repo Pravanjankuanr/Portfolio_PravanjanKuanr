@@ -197,4 +197,36 @@ if (docOverlay) {
 }
 
 
+/* ========================
+   Open Tutorial Popup
+======================== */
+const openTutorialBtns = document.querySelectorAll(".open-tutorial-btn");
+openTutorialBtns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault(); // prevent page reload or navigation
+    const modal = document.createElement("div");
+    modal.className = "popup-overlay";
+    modal.innerHTML = `
+      <div class="popup-box">
+        <button class="popup-close">&times;</button>
+        <h2>Working in progress</h2>
+        <p>It will be available soon!</p>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    const closePopup = () => modal.remove();
+    modal.querySelector(".popup-close").addEventListener("click", closePopup);
+    modal.querySelector(".popup-ok").addEventListener("click", closePopup);
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closePopup();
+    });
+    document.addEventListener("keydown", function escClose(e) {
+      if (e.key === "Escape") {
+        closePopup();
+        document.removeEventListener("keydown", escClose);
+      }
+    });
+  });
+});
+
 }); // End Line
