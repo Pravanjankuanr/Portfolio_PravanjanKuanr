@@ -1,0 +1,220 @@
+{% extends 'base.html' %} {% block content %}
+<section class="doc_content">
+  <!-- 🔥 Floating Hamburger -->
+  <div id="hamburgerBtn" class="hamburger-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- 🔥 Overlay for mobile -->
+  <div class="sidebar-overlay"></div>
+
+  <div class="doc-layout">
+    <!-- ===== Sidebar ===== -->
+    <aside id="docSidebar" class="sidebar">
+      <h3>On this page</h3>
+      <nav>
+        <ul>
+          <li><a href="#intro">Welcome</a></li>
+          <li><a href="#git-github">Git & GitHub</a></li>
+          <li><a href="#vcs">Version Control</a></li>
+          <li><a href="#setup">Setup Guide</a></li>
+          <li><a href="#terminology">Terminology</a></li>
+          <li><a href="#gettingstarted">Getting Started</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- ===== Main Content ===== -->
+    <div class="container content-area">
+      <!-- Welcome -->
+      <h2 id="intro">Git Tutorials</h2>
+      <article class="doccontentbox">
+        <h3>Welcome</h3>
+        <p>
+          Namaste and Welcome to to Git! Let’s learn Git the easy way with clear
+          steps and real examples.
+        </p>
+      </article>
+
+      <!-- Git vs GitHub -->
+      <article class="doccontentbox" id="git-github">
+        <h3>Git and GitHub</h3>
+        <p>
+          <b>Git</b> is a free software you install on your computer (Windows,
+          macOS, or Linux) to track changes in your files.
+        </p>
+        <p>
+          <b>GitHub</b> is like Google Drive for Git projects. You can upload
+          your code online, share it with others, and work together as a team.
+          GitHub is the most popular option, but there are other similar
+          platforms too, like GitLab, Bitbucket, and SourceForge.
+        </p>
+        <h3>Why use Git?</h3>
+        <p>
+          Git is like a smart notebook that saves every draft of your work.
+          Imagine writing a book—Git lets you save each version so you can go
+          back if you make a mistake. When working in a team, everyone writes
+          their part on separate copies (<b>branches</b>) and later combines
+          them into one final version (<b>merge</b>). In this tutorial, we’ll
+          learn these ideas step by step in a simple way.
+        </p>
+      </article>
+
+      <!-- Version Control -->
+      <article class="doccontentbox" id="vcs">
+        <h3>Version Control System</h3>
+        <p>
+          Version control systems are like a “time machine” for your code. They
+          let you save different versions of your work, go back if you make a
+          mistake, and work together with others. Think of it like
+          <b>checkpoints in a video game</b>—you can always return to an earlier
+          point if something goes wrong.
+        </p>
+        <p>
+          Before Git, developers used older systems like
+          <b>SCCS, CVS, SVN, and Perforce</b>. But SCCS was expensive and hard
+          to use. Git was later created to make version control free, easy, and
+          accessible for everyone, which is why it’s so popular today.
+        </p>
+      </article>
+
+      <!-- Setup Git and GitHub -->
+      <article class="doccontentbox" id="setup">
+        <h3>Setup Git and GitHub</h3>
+
+        <p>
+          <b>Git installation:</b>
+          You can either use the command line or download it from the official
+          website. Git works on Windows, macOS, and Linux.
+          <a href="https://git-scm.com/downloads" target="_blank"
+            >Download Git here</a
+          >
+        </p>
+        <p>
+          <b>Creating an account on GitHub</b>
+          is another important step.
+          <a href="https://github.com/" target="_blank">GitHub</a> offers free
+          accounts for everyone.
+        </p>
+        <p>
+          <b>To push (upload) code to GitHub:</b> You need to set up
+          <b>SSH keys</b>. This provides a secure way to log in without entering
+          your password every time. Since GitHub no longer allows password
+          login, SSH key setup is required.
+        </p>
+      </article>
+
+      <!-- Terminology -->
+      <article class="doccontentbox" id="terminology">
+        <h3>Terminology</h3>
+        <p>
+          <b>Repository(Repo):</b>
+          A folder that Git is tracking. Like a project folder on your computer
+          where all versions are saved.
+        </p>
+
+        <p>
+          <b>Commit:</b>
+          A saved snapshot of your work. Like pressing “Save” in a video game or
+          saving a draft of your essay.
+        </p>
+
+        <p>
+          <b>Branch:</b>
+          An alternative timeline of your project. Like writing a “what-if”
+          version of a story without changing the main one.
+        </p>
+
+        <p>
+          <b>Merge:</b>
+          Combining changes from different branches into one. Like friends
+          writing different chapters of a book and then putting them together.
+        </p>
+
+        <p>
+          <b>Clone:</b>
+          Copying a repository from GitHub to your computer. Like downloading a
+          Google Drive folder to your laptop.
+        </p>
+
+        <p>
+          <b>Push:</b>
+          Sending your changes from your computer to GitHub. Like uploading
+          files from your PC to Google Drive.
+        </p>
+
+        <p>
+          <b>Pull:</b>
+          Getting the latest changes from GitHub to your computer. Like
+          downloading the latest version of a shared Google Doc.
+        </p>
+
+        <p><b>Stash:</b></p>
+      </article>
+
+      <!-- Placeholder Git Commands -->
+      <article class="doccontentbox" id="gettingstarted">
+        <h3>Getting Started</h3>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        />
+        <b>Check your git version</b><br />
+        <span class="run-guide"
+          >To check your Git version, run this command in your terminal or
+          command prompt:</span
+        >
+        <pre><code>git --version</code></pre>
+        <b>Config Settings</b><br />
+        <span>
+          Git lets you set up basic information like your username and email,
+          which are saved in a config file. These details are added to every
+          commit you make so others know who made the changes. You can set
+          global settings that apply to all projects or repository-specific
+          settings for just one project. It’s best to use the same username and
+          email as your GitHub account when configuring Git. </span
+        ><br /><br />
+        <span>
+          Let’s set up your email and username in Git’s config file. It’s
+          recommended to create a GitHub account first and then use the same
+          email and username from your account. This way your commits will be
+          properly linked to your GitHub profile. </span
+        ><br />
+        <span class="run-guide"
+          >To set your email, use this command (replace it with the email you
+          use to log in to GitHub):</span
+        >
+        <pre><code>git config --global user.email "your-email@example.com"</code></pre>
+        <span class="run-guide"
+          >Set your username with this command (replace it with your GitHub
+          username):</span
+        >
+        <pre><code>git config --global user.name "username"</code></pre>
+        <span class="run-guide"
+          >Now you can check your config settings by running this command in
+          your terminal or command prompt:</span
+        >
+        <pre><code>git config --list</code></pre>
+        <b>Repository</b><br />
+        <span>
+          A repository (repo) is like a special folder on your computer that not
+          only stores your files and folders but also keeps track of every
+          change you make. Imagine working on a school project—your folder holds
+          all chapters, images, and notes, but with Git as a repository, it also
+          remembers every version, like a diary of changes. You can think of it
+          as a CCTV camera for your folder, recording who changed what and when. </span
+        ><br/><br/>
+        <span class="run-guide"
+          >To see the current state of your repository at any time, you can run
+          the command:</span
+        >
+        <pre><code>git status</code></pre>
+
+        <p>We’ll cover useful Git commands here in the next section 🚀</p>
+      </article>
+    </div>
+  </div>
+</section>
+{% endblock %}

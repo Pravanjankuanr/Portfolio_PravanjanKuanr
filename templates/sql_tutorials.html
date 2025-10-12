@@ -1,54 +1,148 @@
 {% extends 'base.html' %} 
 {% block content %}
 <section class="doc_content">
-  <div class="doc-layout">
+  <!-- 🔥 Floating Hamburger -->
+  <div id="hamburgerBtn" class="hamburger-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
+  <!-- 🔥 Overlay for mobile -->
+  <div class="sidebar-overlay"></div>
+
+  <div class="doc-layout">
     <!-- ===== Sidebar ===== -->
-    <aside class="sidebar">
+    <aside id="docSidebar" class="sidebar">
       <h3>On this page</h3>
       <nav>
         <ul>
-          <li><a href="#intro">Introduction</a></li>
-          <li><a href="#git-github">Git & GitHub</a></li>
+          <li><a href="#intro">Welcome</a></li>
+          <li><a href="#sql-nosql">SQL & NoSQL</a></li>
+          <li><a href="#installation">Installation</a></li>
           <li><a href="#terminology">Terminology</a></li>
-          <li><a href="#commands">Git Commands</a></li>
+          <li><a href="#datatypes">Data Types</a></li>
+          <li><a href="#gettingstarted">Getting Started</a></li>
         </ul>
       </nav>
     </aside>
 
     <!-- ===== Main Content ===== -->
     <div class="container content-area">
-      <h2 id="intro">Git Tutorials</h2>
-
+      <!-- Welcome -->
+      <h2 id="intro">SQL Tutorials</h2>
       <article class="doccontentbox">
-        <h3>Namaste and Welcome to Git Tutorials 🎉</h3>
-        <p>This guide is your friendly companion for learning <b>Git & GitHub</b> ...</p>
+        <h3>Welcome</h3>
+        <p>
+          Namaste and Welcome! Let’s learn SQL the easy way with clear steps and real examples.
+        </p>
       </article>
 
-      <article class="doccontentbox" id="git-github">
-        <h3>Git and GitHub</h3>
-        <p>Let’s start with the foundation...</p>
-        <h4>Git vs. GitHub</h4>
-        <p>Although they sound similar, Git and GitHub are not the same thing.</p>
+      <!-- SQL & NoSQL -->
+      <article class="doccontentbox" id="sql-nosql">
+        <h3>SQL & NoSQL</h3>
+        <p>
+          <b>SQL (Structured Query Language)</b> databases are like spreadsheets. 
+          Imagine an Excel sheet with rows and columns — each column has a fixed type of data 
+          (like Name, Age, Salary), and every row must follow that structure. SQL databases are powerful 
+          for handling structured data, supporting joins between tables, and ensuring accuracy through transactions. 
+          Examples: MySQL, PostgreSQL, and Oracle.
+        </p>
+        <p>
+          <b>NoSQL (Not Only SQL)</b> databases are like a filing cabinet. Each document can have different fields, 
+          making them flexible for unstructured or changing data. Instead of strict rows and columns, 
+          they adapt to the data shape. Examples: MongoDB, Cassandra, Redis — often used in real-time, 
+          high-speed, and scalable applications.
+        </p>
+        <h3>Why is it important?</h3>
+        <p>
+          SQL is the standard language for interacting with relational databases, which power most applications 
+          we use daily. From banking and e-commerce to healthcare and social media, SQL ensures accuracy, 
+          consistency, and security. It’s the foundation of modern data management and a must-have skill 
+          for anyone working with technology.
+        </p>
       </article>
 
+      <!-- Installation -->
+      <article class="doccontentbox" id="installation">
+               <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        />
+        <h3>SQL Installation</h3>
+        <b>Windows:</b><br/>
+        <span>Download from: 
+          <a href="https://dev.mysql.com/downloads/" target="_blank">MySQL Community Downloads</a>
+        </span><br/>
+        <span>During setup, set a <b>root password</b>.</span><br/><br/>
+
+        <b>Mac:</b><br/>
+        <span class="run-guide">Run this command in your terminal or command prompt for download:</span>
+        <pre><code>brew install mysql</code></pre>
+        <span class="run-guide">Run this command in your terminal or command prompt for download:</span>
+        <pre><code>brew services start mysql</code></pre>
+        <span class="run-guide">Set a root password during secure installation.</span>
+        <pre><code>mysql_secure_installation</code></pre>
+
+        <b>Linux:</b><br/>
+        <pre><code>sudo apt install mysql-server
+sudo mysql_secure_installation</code></pre>
+        <span>Set a root password during secure installation.</span><br/><br/>
+
+        <b>Login to MySQL:</b>
+        <pre><code>mysql -u root -p</code></pre>
+      </article>
+
+      <!-- Terminology -->
       <article class="doccontentbox" id="terminology">
         <h3>Terminology</h3>
-        <h4>Check git version</h4>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-        <pre><code>git --version</code></pre>
-        <h4>Repository</h4>
-        <p>A repository is a special folder that stores your code...</p>
+        <p><b>Database:</b> A collection of related data, e.g., an online store database.</p>
+        <p><b>Table:</b> Stores data in rows & columns, like a spreadsheet.</p>
+        <p><b>Row (Record):</b> A single entry, e.g., one customer’s details.</p>
+        <p><b>Column (Field):</b> Defines the type of data, e.g., Name, Age.</p>
+        <p><b>Primary Key:</b> A unique identifier for each row, e.g., Customer_ID.</p>
+        <p><b>Foreign Key:</b> A field linking two tables, e.g., Orders → Customers.</p>
+        <p><b>Schema:</b> Structure of the database.</p>
+        <p><b>Query:</b> A request to retrieve/modify data.</p>
+        <p><b>Constraint:</b> Rules applied to data, e.g., NOT NULL, UNIQUE.</p>
+        <p><b>Index:</b> Speeds up retrieval, like a book index.</p>
       </article>
 
-      <article class="doccontentbox" id="commands">
-        <h3>git rm -r .</h3>
-        <pre><code>
-SELECT Orders.OrderID, Customers.CustomerName
-FROM Orders
-INNER JOIN Customers 
-ON Orders.CustomerID = Customers.CustomerID;
-        </code></pre>
+      <!-- Data Types -->
+      <article class="doccontentbox" id="datatypes">
+        <h3>SQL Data Types</h3>
+        <p><b>INT:</b> Whole numbers (e.g., 25, -100).</p>
+        <p><b>DECIMAL / NUMERIC:</b> Fixed precision numbers, e.g., DECIMAL(10,2).</p>
+        <p><b>FLOAT / DOUBLE:</b> Approximate decimal values.</p>
+        <p><b>VARCHAR(n):</b> Variable-length text (up to n chars).</p>
+        <p><b>CHAR(n):</b> Fixed-length text.</p>
+        <p><b>TEXT:</b> Long text (paragraphs).</p>
+        <p><b>DATE:</b> Stores dates (YYYY-MM-DD).</p>
+        <p><b>TIME:</b> Stores time (HH:MM:SS).</p>
+        <p><b>DATETIME / TIMESTAMP:</b> Stores date & time together.</p>
+        <p><b>BOOLEAN:</b> TRUE/FALSE (1 or 0).</p>
+      </article>
+
+      <!-- Getting Started -->
+      <article class="doccontentbox" id="gettingstarted">
+        <h3>Getting Started</h3>
+        <b>Check version</b>
+        <pre><code>mysql --version</code></pre>
+        
+        <b>Create Database</b><br/>
+        <span>To create a new database:</span>
+        <pre><code>CREATE DATABASE my_database;</code></pre>
+        
+        <b>Use Database</b><br/>
+        <pre><code>USE my_database;</code></pre>
+        
+        <b>Create Table Example</b><br/>
+        <pre><code>CREATE TABLE Customers (
+  Customer_ID INT PRIMARY KEY,
+  Name VARCHAR(50),
+  Email VARCHAR(100),
+  Age INT
+);</code></pre>
       </article>
     </div>
   </div>
