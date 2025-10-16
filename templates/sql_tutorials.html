@@ -1,5 +1,4 @@
-{% extends 'base.html' %} 
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <section class="doc_content">
   <!-- 🔥 Floating Hamburger -->
   <div id="hamburgerBtn" class="hamburger-btn">
@@ -23,6 +22,9 @@
           <li><a href="#terminology">Terminology</a></li>
           <li><a href="#datatypes">Data Types</a></li>
           <li><a href="#gettingstarted">Getting Started</a></li>
+          <li><a href="#CRUD">CRUD Operation</a></li>
+          <li><a href="#TableModification">Table Modification</a></li>
+          <li><a href="#joins">Joins</a></li>
         </ul>
       </nav>
     </aside>
@@ -34,7 +36,8 @@
       <article class="doccontentbox">
         <h3>Welcome</h3>
         <p>
-          Namaste and Welcome! Let’s learn SQL the easy way with clear steps and real examples.
+          Namaste and Welcome! Let’s learn SQL the easy way with clear steps and
+          real examples.
         </p>
       </article>
 
@@ -42,52 +45,67 @@
       <article class="doccontentbox" id="sql-nosql">
         <h3>SQL & NoSQL</h3>
         <p>
-          <b>SQL (Structured Query Language)</b> databases are like spreadsheets. 
-          Imagine an Excel sheet with rows and columns — each column has a fixed type of data 
-          (like Name, Age, Salary), and every row must follow that structure. SQL databases are powerful 
-          for handling structured data, supporting joins between tables, and ensuring accuracy through transactions. 
-          Examples: MySQL, PostgreSQL, and Oracle.
+          <b>SQL (Structured Query Language)</b> databases are like
+          spreadsheets. Imagine an Excel sheet with rows and columns — each
+          column has a fixed type of data (like Name, Age, Salary), and every
+          row must follow that structure. SQL databases are powerful for
+          handling structured data, supporting joins between tables, and
+          ensuring accuracy through transactions. Examples: MySQL, PostgreSQL,
+          and Oracle.
         </p>
         <p>
-          <b>NoSQL (Not Only SQL)</b> databases are like a filing cabinet. Each document can have different fields, 
-          making them flexible for unstructured or changing data. Instead of strict rows and columns, 
-          they adapt to the data shape. Examples: MongoDB, Cassandra, Redis — often used in real-time, 
-          high-speed, and scalable applications.
+          <b>NoSQL (Not Only SQL)</b> databases are like a filing cabinet. Each
+          document can have different fields, making them flexible for
+          unstructured or changing data. Instead of strict rows and columns,
+          they adapt to the data shape. Examples: MongoDB, Cassandra, Redis —
+          often used in real-time, high-speed, and scalable applications.
         </p>
         <h3>Why is it important?</h3>
         <p>
-          SQL is the standard language for interacting with relational databases, which power most applications 
-          we use daily. From banking and e-commerce to healthcare and social media, SQL ensures accuracy, 
-          consistency, and security. It’s the foundation of modern data management and a must-have skill 
-          for anyone working with technology.
+          SQL is the standard language for interacting with relational
+          databases, which power most applications we use daily. From banking
+          and e-commerce to healthcare and social media, SQL ensures accuracy,
+          consistency, and security. It’s the foundation of modern data
+          management and a must-have skill for anyone working with technology.
         </p>
       </article>
 
       <!-- Installation -->
       <article class="doccontentbox" id="installation">
-               <link
+        <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         />
         <h3>SQL Installation</h3>
-        <b>Windows:</b><br/>
-        <span>Download from: 
-          <a href="https://dev.mysql.com/downloads/" target="_blank">MySQL Community Downloads</a>
-        </span><br/>
-        <span>During setup, set a <b>root password</b>.</span><br/><br/>
+        <b>Windows:</b><br />
+        <span
+          >Download from:
+          <a href="https://dev.mysql.com/downloads/" target="_blank"
+            >MySQL Community Downloads</a
+          > </span
+        ><br />
+        <span>During setup, set a <b>root password</b>.</span><br /><br />
 
-        <b>Mac:</b><br/>
-        <span class="run-guide">Run this command in your terminal or command prompt for download:</span>
+        <b>Mac:</b><br />
+        <span class="run-guide"
+          >Run this command in your terminal or command prompt for
+          download:</span
+        >
         <pre><code>brew install mysql</code></pre>
-        <span class="run-guide">Run this command in your terminal or command prompt for download:</span>
+        <span class="run-guide"
+          >Run this command in your terminal or command prompt for
+          download:</span
+        >
         <pre><code>brew services start mysql</code></pre>
-        <span class="run-guide">Set a root password during secure installation.</span>
+        <span class="run-guide"
+          >Set a root password during secure installation.</span
+        >
         <pre><code>mysql_secure_installation</code></pre>
 
-        <b>Linux:</b><br/>
+        <b>Linux:</b><br />
         <pre><code>sudo apt install mysql-server
 sudo mysql_secure_installation</code></pre>
-        <span>Set a root password during secure installation.</span><br/><br/>
+        <span>Set a root password during secure installation.</span><br /><br />
 
         <b>Login to MySQL:</b>
         <pre><code>mysql -u root -p</code></pre>
@@ -96,23 +114,52 @@ sudo mysql_secure_installation</code></pre>
       <!-- Terminology -->
       <article class="doccontentbox" id="terminology">
         <h3>Terminology</h3>
-        <p><b>Database:</b> A collection of related data, e.g., an online store database.</p>
-        <p><b>Table:</b> Stores data in rows & columns, like a spreadsheet.</p>
-        <p><b>Row (Record):</b> A single entry, e.g., one customer’s details.</p>
-        <p><b>Column (Field):</b> Defines the type of data, e.g., Name, Age.</p>
-        <p><b>Primary Key:</b> A unique identifier for each row, e.g., Customer_ID.</p>
-        <p><b>Foreign Key:</b> A field linking two tables, e.g., Orders → Customers.</p>
-        <p><b>Schema:</b> Structure of the database.</p>
-        <p><b>Query:</b> A request to retrieve/modify data.</p>
-        <p><b>Constraint:</b> Rules applied to data, e.g., NOT NULL, UNIQUE.</p>
-        <p><b>Index:</b> Speeds up retrieval, like a book index.</p>
+        <p>
+          <b>Database:</b>
+          <span
+            >A collection of related data, e.g., an online store database.</span
+          >
+        </p>
+        <p>
+          <b>Table:</b>
+          <span>Stores data in rows & columns, like a spreadsheet.</span>
+        </p>
+        <p>
+          <b>Row (Record):</b>
+          <span>A single entry, e.g., one customer’s details.</span>
+        </p>
+        <p>
+          <b>Column (Field):</b>
+          <span>Defines the type of data, e.g., Name, Age.</span>
+        </p>
+        <p>
+          <b>Primary Key:</b>
+          <span>Unique identifier for each row, e.g., Customer_ID.</span>
+        </p>
+        <p>
+          <b>Foreign Key:</b>
+          <span>Links two tables, e.g., Orders → Customers.</span>
+        </p>
+        <p><b>Schema:</b> <span>Structure or design of the database.</span></p>
+        <p><b>Query:</b> <span>Request to retrieve or modify data.</span></p>
+        <p>
+          <b>Constraint:</b>
+          <span>Rules applied to data, e.g., NOT NULL, UNIQUE.</span>
+        </p>
+        <p>
+          <b>Index:</b>
+          <span>Speeds up data retrieval, like a book index.</span>
+        </p>
       </article>
 
       <!-- Data Types -->
       <article class="doccontentbox" id="datatypes">
         <h3>SQL Data Types</h3>
         <p><b>INT:</b> Whole numbers (e.g., 25, -100).</p>
-        <p><b>DECIMAL / NUMERIC:</b> Fixed precision numbers, e.g., DECIMAL(10,2).</p>
+        <p>
+          <b>DECIMAL / NUMERIC:</b> Fixed precision numbers, e.g.,
+          DECIMAL(10,2).
+        </p>
         <p><b>FLOAT / DOUBLE:</b> Approximate decimal values.</p>
         <p><b>VARCHAR(n):</b> Variable-length text (up to n chars).</p>
         <p><b>CHAR(n):</b> Fixed-length text.</p>
@@ -128,21 +175,251 @@ sudo mysql_secure_installation</code></pre>
         <h3>Getting Started</h3>
         <b>Check version</b>
         <pre><code>mysql --version</code></pre>
-        
-        <b>Create Database</b><br/>
+
+        <b>Create Database</b><br />
         <span>To create a new database:</span>
         <pre><code>CREATE DATABASE my_database;</code></pre>
-        
-        <b>Use Database</b><br/>
+
+        <b>Use Database</b><br />
         <pre><code>USE my_database;</code></pre>
-        
-        <b>Create Table Example</b><br/>
+
+        <b>Create Table Example</b><br />
         <pre><code>CREATE TABLE Customers (
   Customer_ID INT PRIMARY KEY,
   Name VARCHAR(50),
   Email VARCHAR(100),
   Age INT
 );</code></pre>
+        <b>Inserting Data into a Table</b><br />
+        <pre><code>INSERT INTO Customers (Customer_ID, Name, Email, Age)VALUES
+  (1, 'Rahul Sharma', 'rahul.sharma@example.com', 28),
+  (2, 'Priya Singh', 'priya.singh@example.com', 32);
+</code></pre>
+      </article>
+      <!-- CRUD Operation -->
+      <article class="doccontentbox" id="CRUD">
+        <h3>CRUD Operation</h3>
+
+        <b>What is CRUD Operation?</b><br />
+        <span>
+          CRUD stands for Create, Read, Update, and Delete — the four basic
+          actions used to work with data in a database. </span
+        ><br /><br />
+
+        <b>CREATE:</b><br />
+        <span>Used to add new data.</span>
+        <pre><code>INSERT INTO Customers (Name, Email, Age)
+VALUES ('Rahul Sharma', 'rahul.sharma@example.com', 28);</code></pre>
+
+        <b>READ:</b><br />
+        <span>Used to view or fetch data.</span>
+        <pre><code>SELECT * FROM Customers;</code></pre>
+
+        <b>UPDATE:</b><br />
+        <span>Used to change existing data.</span>
+        <pre><code>UPDATE Customers
+SET Age = 30
+WHERE Name = 'Rahul Sharma';</code></pre>
+
+        <b>DELETE:</b><br />
+        <span>Used to remove data.</span>
+        <pre><code>DELETE FROM Customers
+WHERE Name = 'Rahul Sharma';</code></pre>
+      </article>
+
+      <!-- Table Modification Commands -->
+      <article class="doccontentbox" id="TableModification">
+        <h3>Table Modification Commands</h3>
+
+        <b>ADReMoC → Add, Drop, Rename, Modify, Change</b><br />
+        <span>Easy shortcut to remember common ALTER TABLE operations.</span
+        ><br /><br />
+
+        <b>ADD COLUMN (Add)</b><br />
+        <span>Used to add a new column to a table.</span>
+        <pre><code>ALTER TABLE product
+ADD COLUMN product_type VARCHAR(20) NOT NULL;</code></pre>
+
+        <b>DROP COLUMN (Drop)</b><br />
+        <span>Used to remove a column from a table.</span>
+        <pre><code>ALTER TABLE employee
+DROP COLUMN channel;</code></pre>
+
+        <b>RENAME TABLE (Rename)</b><br />
+        <span>Used to change the table name.</span>
+        <pre><code>ALTER TABLE emp
+RENAME TO employee;</code></pre>
+
+        <b>MODIFY COLUMN (Modify)</b><br />
+        <span>Used to change a column's data type or nullability.</span>
+        <pre><code>ALTER TABLE employee
+MODIFY channel VARCHAR(30) NULL;</code></pre>
+
+        <b>CHANGE COLUMN NAME (Change)</b><br />
+        <span
+          >Used to rename a column (often allows changing type at the same
+          time).</span
+        >
+        <pre><code>ALTER TABLE employee
+CHANGE channels channel VARCHAR(30) NOT NULL;</code></pre>
+
+        <br />
+        <span
+          >Note: SQL dialects differ — keywords (e.g., <code>MODIFY</code> vs
+          <code>ALTER COLUMN</code>, <code>CHANGE</code> vs
+          <code>RENAME COLUMN</code>) vary by database (MySQL, PostgreSQL, SQL
+          Server).</span
+        >
+      </article>
+      <!-- SQL Concepts -->
+      <article class="doccontentbox" id="sqlConcepts">
+        <h3>SQL Concepts</h3>
+
+        <!-- WHERE Clause -->
+        <b>WHERE Clause:</b><br />
+        <span>Used to filter rows based on a condition.</span>
+        <pre><code>SELECT * FROM Customers
+WHERE Customer_ID = 1;</code></pre>
+
+        <!-- ORDER BY -->
+        <b>ORDER BY:</b><br />
+        <span>Sorts the result set. Default is ASC (ascending).</span>
+        <pre><code>SELECT * FROM Customers
+ORDER BY Customer_ID DESC;</code></pre>
+
+        <!-- GROUP BY -->
+        <b>GROUP BY:</b><br />
+        <span>Groups rows with the same values in a column.</span>
+        <pre><code>SELECT Age, COUNT(*) AS Total_Customers
+FROM Customers
+GROUP BY Age;</code></pre>
+
+        <!-- HAVING -->
+        <b>HAVING:</b><br />
+        <span
+          >Filters groups created by GROUP BY (like WHERE but for groups).</span
+        >
+        <pre><code>SELECT Age, COUNT(*) AS Total_Customers
+FROM Customers
+GROUP BY Age
+HAVING COUNT(*) &gt; 1;</code></pre>
+
+        <!-- ALIAS -->
+        <b>Alias (AS):</b><br />
+        <span>Gives a temporary nickname to a table or column.</span>
+        <pre><code>SELECT COUNT(Name) AS Total_Customers
+FROM Customers;</code></pre>
+
+        <!-- DISTINCT -->
+        <b>DISTINCT:</b><br />
+        <span>Returns unique values only.</span>
+        <pre><code>SELECT DISTINCT Name
+FROM Customers;</code></pre>
+
+        <!-- Operators -->
+        <b>Operators: What is operators</b><br />
+        <span>Used for filtering and logical conditions.</span>
+        <pre><code>
+-- Logical operators
+SELECT * FROM Customers
+WHERE Age &gt; 25 AND Age &lt; 35;
+
+-- Pattern matching like all the forms
+SELECT * FROM Customers
+WHERE Name LIKE 'R%';  -- Names starting with R
+
+-- NULL handling
+SELECT * FROM Customers
+WHERE Email IS NOT NULL;
+  </code></pre>
+      </article>
+
+      <!-- Joins in SQL -->
+      <article class="doccontentbox" id="joins">
+        <h3>Joins in SQL</h3>
+        <p>
+          <b>What is a Join?</b><br />
+          <span>
+            A <b>JOIN</b> in SQL is used to combine data from two or more tables
+            based on a related column between them. It helps you see connected
+            information — like customers and their orders — in one view.
+          </span>
+        </p>
+
+        <h4>1️⃣ INNER JOIN</h4>
+        <p>
+          Returns only the records that have matching values in both tables.
+        </p>
+        <pre><code>
+SELECT Customers.Name, Orders.Order_ID
+FROM Customers
+INNER JOIN Orders ON Customers.Customer_ID = Orders.Customer_ID;
+  </code></pre>
+
+        <h4>2️⃣ LEFT JOIN</h4>
+        <p>
+          Returns all records from the left table (Customers), and matching
+          records from the right table (Orders). If there’s no match, it shows
+          <b>NULL</b>.
+        </p>
+        <pre><code>
+SELECT Customers.Name, Orders.Order_ID
+FROM Customers
+LEFT JOIN Orders ON Customers.Customer_ID = Orders.Customer_ID;
+  </code></pre>
+
+        <h4>3️⃣ RIGHT JOIN</h4>
+        <p>
+          Returns all records from the right table (Orders), and matching
+          records from the left table (Customers).
+        </p>
+        <pre><code>
+SELECT Customers.Name, Orders.Order_ID
+FROM Customers
+RIGHT JOIN Orders ON Customers.Customer_ID = Orders.Customer_ID;
+  </code></pre>
+
+        <h4>4️⃣ FULL JOIN</h4>
+        <p>
+          Combines all records from both tables. If there’s no match, missing
+          data is filled with <b>NULL</b>.
+        </p>
+        <pre><code>
+SELECT Customers.Name, Orders.Order_ID
+FROM Customers
+FULL JOIN Orders ON Customers.Customer_ID = Orders.Customer_ID;
+  </code></pre>
+
+        <div style="text-align: center; margin-top: 1rem">
+          <img
+            src="{{ url_for('static', filename='images/sql_join.png') }}"
+            alt="SQL Joins Diagram"
+            style="
+              max-width: 80%;
+              height: 250px;
+              border-radius: 10px;
+              box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            "
+          />
+          <p style="font-size: 14px; color: #555">
+            Illustration: SQL Joins — INNER, LEFT, RIGHT, and FULL
+          </p>
+        </div>
+      </article>
+
+      <article class="doccontentbox" id="sqlConcepts">
+        <!-- Aggregation -->
+        <b>Aggregation Functions: Create a section for this </b><br />
+        <span
+          >Perform calculations on multiple rows to return a single value.</span
+        >
+        <pre><code>
+SELECT COUNT(*) AS Total_Customers FROM Customers;
+SELECT SUM(Age) AS Total_Age FROM Customers;
+SELECT AVG(Age) AS Average_Age FROM Customers;
+SELECT MIN(Age) AS Youngest FROM Customers;
+SELECT MAX(Age) AS Oldest FROM Customers;
+  </code></pre>
       </article>
     </div>
   </div>

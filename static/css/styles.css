@@ -771,17 +771,18 @@ footer {
 
 /* ====== Paragraphs ====== */
 .doccontentbox p {
-  margin-bottom: 1rem;
-  font-size: 20px;
+  margin-bottom: 0.3rem;
+  font-size: 17px;
+  line-height: 1.4; 
 }
 
 .doccontentbox b {
-  margin-bottom: 1rem;
-  font-size: 21px;
+  margin-bottom: 0.90rem;
+  font-size: 17px;
 }
 
 .doccontentbox span{
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .doccontentbox .run-guide{
@@ -792,12 +793,12 @@ footer {
 pre {
   background: #1e1e1e;
   color: #e5e5e5;
-  padding: 8px 15px;      /* balanced top/bottom + left/right */
+  padding: 10px 14px;      /* balanced top/bottom + left/right */
   margin: 0 0 1rem 0;     /* small bottom spacing */
   border-radius: 8px;
   overflow-x: auto;       /* only scroll if needed */
-  font-size: 0.95rem;
-  line-height: 3;
+  font-size: 0.85rem;
+  line-height: 1.5;
   white-space: pre;       /* respect spacing */
 }
 
