@@ -93,25 +93,31 @@ p {font-size: 16px;}
   }
 
   /* Sidebar menu */
-  .nav-links {
-    position: fixed;
-    top: 60px; /* same as navbar height */
-    right: -250px; /* hidden off screen */
-    height: 100vh;
-    width: 200px;
-    background: #fff;
-    flex-direction: column;
-    padding: 20px;
-    gap: 15px;
-    box-shadow: -2px 0 8px rgba(0,0,0,0.1);
-    transition: right 0.3s ease;
-    z-index: 999;
-  }
+.nav-links {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  z-index: 999;
+}
 
-  /* Active (slide in) */
-  .nav-links.active {
-    right: 0;
-  }
+/* When menu is active (hamburger clicked) */
+.nav-links.active {
+  max-height: 300px;
+  opacity: 1;
+  visibility: visible;
+}
 
   .nav-links a {
     font-size: 1.1rem;
@@ -132,7 +138,7 @@ p {font-size: 16px;}
   }
 }
 
-/* Hamburger Animation */
+/* X - Hamburger Animation */
 .menu-toggle.open span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
@@ -142,6 +148,8 @@ p {font-size: 16px;}
 .menu-toggle.open span:nth-child(3) {
   transform: rotate(-45deg) translate(6px, -6px);
 }
+
+
 
 /* =========================
    Hero Section
@@ -235,9 +243,7 @@ p {font-size: 16px;}
   color: #0e4051;
 }
 
-/* =========================
-   About Section
-========================= */
+/* == About Section == */
 .about {
   padding: 60px 20px;
   background: #f6f6ff;
@@ -253,9 +259,7 @@ p {font-size: 16px;}
   text-align: left;
 }
 
-/* =========================
-   Timeline Base
-========================= */
+/* == Timeline Base == */
 .timeline {
   position: relative;
   max-width: 800px;
@@ -278,18 +282,16 @@ p {font-size: 16px;}
 /* Progress Line (dynamic) */
 .progress-line {
   position: absolute;
-  top: 50px; /* same as .timeline::before */
+  top: 50px;
   left: 50%;
   transform: translateX(-50%);
   width: 6px;
-  height: 0; /* grows with JS */
+  height: 0;
   border-radius: 3px;
   z-index: 0;
 }
 
-/* =========================
-   Timeline Items
-========================= */
+/* == Timeline Items == */
 .timeline-item {
   position: relative;
   width: 50%;
@@ -365,9 +367,7 @@ p {font-size: 16px;}
   box-shadow: 0 0 10px #a86dff, 0 0 20px #cbb5f8;
 }
 
-/* =========================
-   Responsive (Tablet)
-========================= */
+/* == Responsive (Tablet) == */
 @media (max-width: 1024px) {
   .timeline-item {
     width: 280px;
@@ -414,8 +414,8 @@ p {font-size: 16px;}
 ========================= */
 @media (max-width: 768px) {
   .timeline-item {
-    width: 200px;
-    height: auto;          /* +20px taller */
+    width: 190px;
+    height: auto;
     padding: 10px;
   }
 
@@ -430,9 +430,8 @@ p {font-size: 16px;}
   background: #803ccf;
 }
 
-
   .timeline-item.left {
-    left: calc(50% - 198px);
+    left: calc(50% - 190px);
     text-align: center;
   }
 
@@ -463,9 +462,7 @@ p {font-size: 16px;}
   }
 }
 
-/* =========================
-   Docs Section
-========================= */
+/* ============ Docs Section ============= */
 .docs {
   padding: 3rem 2rem;
   background: #f8f9fa;
@@ -656,9 +653,6 @@ footer {
   padding: 1rem;
   width: 100%;
 }
-
-
-
 
 
 /* ========================
