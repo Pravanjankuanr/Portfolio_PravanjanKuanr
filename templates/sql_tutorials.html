@@ -32,7 +32,7 @@
     <!-- ===== Main Content ===== -->
     <div class="container content-area">
       <!-- Welcome -->
-      <h2 id="intro">SQL Tutorials</h2>
+      <h2 id="intro">SQL</h2>
       <article class="doccontentbox">
         <h3>Welcome</h3>
         <p>
@@ -177,7 +177,6 @@ sudo mysql_secure_installation</code></pre>
         <pre><code>mysql --version</code></pre>
 
         <b>Create Database</b><br />
-        <span>To create a new database:</span>
         <pre><code>CREATE DATABASE my_database;</code></pre>
 
         <b>Use Database</b><br />
@@ -195,6 +194,45 @@ sudo mysql_secure_installation</code></pre>
   (1, 'Rahul Sharma', 'rahul.sharma@example.com', 28),
   (2, 'Priya Singh', 'priya.singh@example.com', 32);
 </code></pre>
+
+        <b>Categorial SQL Commands</b><br />
+
+        <table border="1" cellpadding="8" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Purpose</th>
+              <th>Key Commands</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>DDL(Data Definition Language)</td>
+              <td>Structure</td>
+              <td>CREATE, ALTER, DROP, TRUNCATE, RENAME</td>
+            </tr>
+            <tr>
+              <td>DML(Data Manipulation Language)</td>
+              <td>Data</td>
+              <td>INSERT, UPDATE, DELETE</td>
+            </tr>
+            <tr>
+              <td>DQL(Data Query Language)</td>
+              <td>Query Data</td>
+              <td>SELECT</td>
+            </tr>
+            <tr>
+              <td>DCL</td>
+              <td>Permissions</td>
+              <td>GRANT, REVOKE</td>
+            </tr>
+            <tr>
+              <td>TCL</td>
+              <td>Transactions</td>
+              <td>COMMIT, ROLLBACK, SAVEPOINT</td>
+            </tr>
+          </tbody>
+        </table>
       </article>
       <!-- CRUD Operation -->
       <article class="doccontentbox" id="CRUD">
@@ -227,11 +265,10 @@ WHERE Name = 'Rahul Sharma';</code></pre>
 WHERE Name = 'Rahul Sharma';</code></pre>
       </article>
 
-      <!-- Table Modification Commands -->
+      <!-- Alter Table -->
       <article class="doccontentbox" id="TableModification">
-        <h3>Table Modification Commands</h3>
+        <h3>Alter Table</h3>
 
-        <b>ADReMoC → Add, Drop, Rename, Modify, Change</b><br />
         <span>Easy shortcut to remember common ALTER TABLE operations.</span
         ><br /><br />
 
@@ -264,74 +301,140 @@ MODIFY channel VARCHAR(30) NULL;</code></pre>
 CHANGE channels channel VARCHAR(30) NOT NULL;</code></pre>
 
         <br />
-        <span
-          >Note: SQL dialects differ — keywords (e.g., <code>MODIFY</code> vs
-          <code>ALTER COLUMN</code>, <code>CHANGE</code> vs
-          <code>RENAME COLUMN</code>) vary by database (MySQL, PostgreSQL, SQL
-          Server).</span
+        <strong>
+          Note: SQL commands can vary between databases — for example, MySQL,
+          PostgreSQL, and SQL Server may use different keywords</strong
         >
       </article>
-      <!-- SQL Concepts -->
-      <article class="doccontentbox" id="sqlConcepts">
-        <h3>SQL Concepts</h3>
+      <!-- Filtering and Sorting-->
+      <article class="doccontentbox" id="filtering-sorting">
+        <h3>Filtering and Sorting</h3>
 
-        <!-- WHERE Clause -->
-        <b>WHERE Clause:</b><br />
-        <span>Used to filter rows based on a condition.</span>
+        <p>
+          <b>WHERE:</b> Used to filter rows based on a specific
+          condition.
+        </p>
         <pre><code>SELECT * FROM Customers
 WHERE Customer_ID = 1;</code></pre>
 
-        <!-- ORDER BY -->
-        <b>ORDER BY:</b><br />
-        <span>Sorts the result set. Default is ASC (ascending).</span>
-        <pre><code>SELECT * FROM Customers
-ORDER BY Customer_ID DESC;</code></pre>
-
-        <!-- GROUP BY -->
-        <b>GROUP BY:</b><br />
-        <span>Groups rows with the same values in a column.</span>
+        <p>
+          <b>GROUP BY:</b> Groups rows that have the same values in one or more
+          columns.
+        </p>
         <pre><code>SELECT Age, COUNT(*) AS Total_Customers
 FROM Customers
 GROUP BY Age;</code></pre>
 
-        <!-- HAVING -->
-        <b>HAVING:</b><br />
-        <span
-          >Filters groups created by GROUP BY (like WHERE but for groups).</span
-        >
+        <p>
+          <b>HAVING:</b> Filters groups created by <code>GROUP BY</code> (like
+          <code>WHERE</code>, but for groups).
+        </p>
         <pre><code>SELECT Age, COUNT(*) AS Total_Customers
 FROM Customers
 GROUP BY Age
 HAVING COUNT(*) &gt; 1;</code></pre>
 
-        <!-- ALIAS -->
-        <b>Alias (AS):</b><br />
-        <span>Gives a temporary nickname to a table or column.</span>
+        <p>
+          <b>ORDER BY:</b> Sorts the result set. Default order is ascending
+          (<code>ASC</code>).
+        </p>
+        <pre><code>SELECT * FROM Customers
+ORDER BY Customer_ID DESC;</code></pre>
+
+        <p><b>LIMIT:</b> Restricts the number of rows returned by a query.</p>
+        <pre><code>SELECT * FROM Customers
+LIMIT 5;</code></pre>
+      </article>
+
+      <!-- Keywords -->
+      <article class="doccontentbox" id="keywords">
+        <h3>Keywords</h3>
+
+        <p>
+          <b>Alias:</b> Gives a temporary name to a column or
+          table, making query results easier to read.
+        </p>
         <pre><code>SELECT COUNT(Name) AS Total_Customers
 FROM Customers;</code></pre>
 
-        <!-- DISTINCT -->
-        <b>DISTINCT:</b><br />
-        <span>Returns unique values only.</span>
+        <p>
+          <b>DISTINCT:</b> Returns only unique values from a
+          column.
+        </p>
         <pre><code>SELECT DISTINCT Name
 FROM Customers;</code></pre>
+      </article>
+      <!-- Operators -->
+      <article class="doccontentbox" id="operators">
+        <h3>Operators in SQL</h3>
+        <p>
+          <b>Operators:</b> Used for filtering, comparing, and performing
+          logical operations in queries.
+        </p>
 
-        <!-- Operators -->
-        <b>Operators: What is operators</b><br />
-        <span>Used for filtering and logical conditions.</span>
-        <pre><code>
--- Logical operators
+        <!-- Comparison Operators -->
+        <p><b>1. Comparison Operators:</b> Compare values in columns.</p>
+        <pre><code>SELECT * FROM Customers
+WHERE Age &gt; 25;      -- Greater than
 SELECT * FROM Customers
-WHERE Age &gt; 25 AND Age &lt; 35;
+WHERE Age &lt;= 30;     -- Less than or equal
+SELECT * FROM Customers
+WHERE Age = 28;         -- Equal
+SELECT * FROM Customers
+WHERE Age &lt;&gt; 28;   -- Not equal
+</code></pre>
 
--- Pattern matching like all the forms
+        <!-- Logical Operators -->
+        <p><b>2. Logical Operators:</b> Combine multiple conditions.</p>
+        <pre><code>SELECT * FROM Customers
+WHERE Age &gt; 25 AND Age &lt; 35;   -- AND
 SELECT * FROM Customers
-WHERE Name LIKE 'R%';  -- Names starting with R
+WHERE City = 'Delhi' OR City = 'Mumbai';  -- OR
+SELECT * FROM Customers
+WHERE NOT City = 'Delhi';           -- NOT
+</code></pre>
 
--- NULL handling
+        <!-- Pattern Matching -->
+        <p>
+          <b>3. Pattern Matching Operators:</b> Search for values matching a
+          pattern.
+        </p>
+        <pre><code>SELECT * FROM Customers
+WHERE Name LIKE 'R%';      -- Names starting with 'R'
 SELECT * FROM Customers
-WHERE Email IS NOT NULL;
-  </code></pre>
+WHERE Name LIKE '%son';    -- Names ending with 'son'
+SELECT * FROM Customers
+WHERE Name LIKE '%an%';    -- Names containing 'an'</code></pre>
+
+        <!-- NULL Handling -->
+        <p><b>4. NULL Handling Operators:</b> Check for NULL values.</p>
+        <pre><code>SELECT * FROM Customers
+WHERE Email IS NULL;       -- Rows with NULL Email
+SELECT * FROM Customers
+WHERE Email IS NOT NULL;   -- Rows with non-NULL Email</code></pre>
+
+        <!-- Other Useful Operators -->
+        <p><b>5. Other Operators:</b></p>
+        <pre><code>SELECT * FROM Customers
+WHERE Age BETWEEN 20 AND 30;      -- Values within a range
+SELECT * FROM Customers
+WHERE City IN ('Delhi','Mumbai'); -- Values in a list
+SELECT * FROM Customers
+WHERE Age NOT BETWEEN 20 AND 30;  -- Values outside a range
+SELECT * FROM Customers
+WHERE City NOT IN ('Delhi','Mumbai'); -- Values not in the list</code></pre>
+
+        <p>
+          <b>BETWEEN:</b> Filters values within a specific range (inclusive of
+          both ends).
+        </p>
+        <pre><code>SELECT * FROM Orders
+WHERE OrderAmount BETWEEN 100 AND 500;</code></pre>
+
+        <p><b>IN:</b> Filters rows that match any value in a given list.</p>
+        <pre><code>SELECT * FROM Customers
+WHERE City IN ('Delhi', 'Mumbai', 'Bangalore');</code></pre>
+
       </article>
 
       <!-- Joins in SQL -->
@@ -419,6 +522,59 @@ SELECT SUM(Age) AS Total_Age FROM Customers;
 SELECT AVG(Age) AS Average_Age FROM Customers;
 SELECT MIN(Age) AS Youngest FROM Customers;
 SELECT MAX(Age) AS Oldest FROM Customers;
+  </code></pre>
+      </article>
+
+      <!-- Important SQL Queries -->
+      <article class="doccontentbox" id="important-sql">
+        <h3>Important SQL Syntax / Queries</h3>
+
+        <p>
+          <b>Store Current Timestamp:</b> Automatically records the current date
+          and time when a new row is added.
+        </p>
+        <pre><code>
+ALTER TABLE Employees 
+add startdate datetime not null default current_timestamp;
+  </code></pre>
+
+        <p><b>Insert Data:</b> Adds new rows to a table.</p>
+        <pre><code>
+INSERT INTO table_name (column1, column2, ...)
+VALUES (value1, value2, ...);
+  </code></pre>
+
+        <p><b>Select Data:</b> Retrieves data from a table.</p>
+        <pre><code>
+SELECT column1, column2
+FROM table_name
+WHERE condition;
+  </code></pre>
+
+        <p><b>Update Data:</b> Modifies existing rows.</p>
+        <pre><code>
+UPDATE table_name
+SET column1 = value1, column2 = value2
+WHERE condition;
+  </code></pre>
+
+        <p><b>Delete Data:</b> Removes rows from a table.</p>
+        <pre><code>
+DELETE FROM table_name
+WHERE condition;
+  </code></pre>
+
+        <p><b>Grant Permissions:</b> Gives access to a user.</p>
+        <pre><code>
+GRANT SELECT, INSERT ON table_name TO user_name;
+  </code></pre>
+
+        <p><b>Rollback / Commit:</b> Transaction control commands.</p>
+        <pre><code>
+BEGIN TRANSACTION;
+-- SQL commands
+COMMIT;   -- Save changes
+ROLLBACK; -- Undo changes
   </code></pre>
       </article>
     </div>
