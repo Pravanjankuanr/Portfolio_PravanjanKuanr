@@ -798,29 +798,30 @@ footer {
 }
 
 /* ====== Code Blocks ====== */
+.pre-wrapper {
+  position: relative; /* for absolute positioning of button */
+  margin-bottom: 1rem;
+}
+
 pre {
   background: #1e1e1e;
   color: #e5e5e5;
-  padding: 10px 14px;      /* balanced top/bottom + left/right */
-  margin: 0 0 1rem 0;     /* small bottom spacing */
+  padding: 10px 14px;
   border-radius: 8px;
-  overflow-x: auto;       /* only scroll if needed */
+  overflow-x: auto;      /* scrollable code */
   font-size: 0.85rem;
   line-height: 1.5;
-  white-space: pre;       /* respect spacing */
+  white-space: pre;
+  margin: 0;
 }
 
 pre code {
   font-family: "Fira Code", monospace;
-  margin: 0;
-  padding: 0;
-  display: block;         /* ensures alignment */
-  white-space: pre;       /* avoid collapsing spaces */
+  display: block;
 }
 
-
 .copy-btn {
-  position: absolute;
+  position: absolute;   /* now relative to wrapper, not pre */
   top: 8px;
   right: 8px;
   background: #2d2d2d;
@@ -830,6 +831,7 @@ pre code {
   cursor: pointer;
   color: #bbb;
   font-size: 14px;
+  z-index: 10;
   transition: background 0.2s, color 0.2s;
 }
 
@@ -843,6 +845,7 @@ pre code {
   font-weight: bold;
   font-size: 12px;
 }
+
 
 
 /* ===== Layout ===== */
@@ -1105,38 +1108,40 @@ pre code {
 }
 
 /* ====== Code Blocks ====== */
+.pre-wrapper {
+  position: relative; /* for absolute positioning of button */
+  margin-bottom: 1rem;
+}
+
 pre {
   background: #1e1e1e;
   color: #e5e5e5;
-  padding: 10px 14px;      /* balanced top/bottom + left/right */
-  margin: 0 0 1rem 0;     /* small bottom spacing */
+  padding: 10px 14px;
   border-radius: 8px;
-  overflow-x: auto;       /* only scroll if needed */
-  font-size: 0.75rem;
+  overflow-x: auto;      /* scrollable code */
+  font-size: 0.85rem;
   line-height: 1.5;
-  white-space: pre;       /* respect spacing */
+  white-space: pre;
+  margin: 0;
 }
 
 pre code {
   font-family: "Fira Code", monospace;
-  margin: 0;
-  padding: 0;
-  display: block;         /* ensures alignment */
-  white-space: pre;       /* avoid collapsing spaces */
+  display: block;
 }
 
-
 .copy-btn {
-  position: absolute;
+  position: absolute;   /* now relative to wrapper, not pre */
   top: 8px;
   right: 8px;
   background: #2d2d2d;
   border: 1px solid #444;
   border-radius: 6px;
-  padding: 2px 6px;
+  padding: 4px 8px;
   cursor: pointer;
   color: #bbb;
-  font-size: 10px;
+  font-size: 14px;
+  z-index: 10;
   transition: background 0.2s, color 0.2s;
 }
 
@@ -1148,8 +1153,9 @@ pre code {
 .copied-text {
   color: #fff;
   font-weight: bold;
-  font-size: 8px;
+  font-size: 12px;
 }
+
 
 
 /* =========================

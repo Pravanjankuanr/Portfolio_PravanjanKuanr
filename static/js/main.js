@@ -39,24 +39,32 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ========================
      Copy Button for Code Blocks
   ======================== */
-  document.querySelectorAll("pre code").forEach((codeBlock) => {
-    const button = document.createElement("button");
-    button.className = "copy-btn";
-    button.innerHTML = '<i class="fa-solid fa-copy"></i>';
+document.querySelectorAll("pre code").forEach((codeBlock) => {
+  const pre = codeBlock.parentNode;
 
-    button.addEventListener("click", () => {
-      navigator.clipboard.writeText(codeBlock.innerText).then(() => {
-        button.innerHTML = '<span class="copied-text">Copied!</span>';
-        setTimeout(() => {
-          button.innerHTML = '<i class="fa-solid fa-copy"></i>';
-        }, 1500);
-      });
+  // create a wrapper for pre + button
+  const wrapper = document.createElement("div");
+  wrapper.className = "pre-wrapper";
+  pre.parentNode.insertBefore(wrapper, pre);
+  wrapper.appendChild(pre);
+
+  // create copy button outside the scrollable pre
+  const button = document.createElement("button");
+  button.className = "copy-btn";
+  button.innerHTML = '<i class="fa-solid fa-copy"></i>';
+
+  button.addEventListener("click", () => {
+    navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+      button.innerHTML = '<span class="copied-text">Copied!</span>';
+      setTimeout(() => {
+        button.innerHTML = '<i class="fa-solid fa-copy"></i>';
+      }, 1500);
     });
-
-    const pre = codeBlock.parentNode;
-    pre.style.position = "relative";
-    pre.appendChild(button);
   });
+
+  // append button to wrapper, not pre
+  wrapper.appendChild(button);
+});
 
   /* ========================
      Progress Bar Home Page
