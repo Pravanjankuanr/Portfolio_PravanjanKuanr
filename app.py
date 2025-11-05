@@ -43,15 +43,19 @@ sheet = client.open_by_key(SHEET_ID).sheet1
 
 
 # -------------------- Email Setup --------------------
-config_path = os.path.join(app.instance_path, "config.json")
-
-with open(config_path, "r") as f:
-    email_cfg = json.load(f)
+email_cfg = {
+    "MAIL_SERVER": os.environ.get("MAIL_SERVER"),
+    "MAIL_PORT": int(os.environ.get("MAIL_PORT", 587)),
+    "MAIL_USE_TLS": os.environ.get("MAIL_USE_TLS", "true").lower() == "true",
+    "MAIL_USERNAME": os.environ.get("MAIL_USERNAME"),
+    "MAIL_PASSWORD": os.environ.get("MAIL_PASSWORD"),
+}
 
 app.config.update(email_cfg)
 app.config["MAIL_DEFAULT_SENDER"] = ("Portfolio Contact", email_cfg["MAIL_USERNAME"])
 
 mail = Mail(app)
+
 # -------------------- Routes --------------------
 
 @app.route('/')
