@@ -43,7 +43,6 @@ sheet = client.open_by_key(SHEET_ID).sheet1
 
 
 # -------------------- Email Setup (Local vs Render) --------------------
-config_path = os.path.join(app.instance_path, "config.json")
 
 if os.environ.get("MAIL_SERVER"):  
     # Running on Render (from environment variables)
@@ -56,6 +55,7 @@ if os.environ.get("MAIL_SERVER"):
     }
 else:
     # Running locally (read from config.json)
+    config_path = os.path.join(app.instance_path, "config.json")
     with open(config_path, "r") as f:
         email_cfg = json.load(f)
 
