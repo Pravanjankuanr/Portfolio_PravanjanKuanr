@@ -42,19 +42,28 @@ SHEET_ID = "1cPNlCLSnxR4eoqrUx23aCNclcjROd4JybB1SSHNS008"
 sheet = client.open_by_key(SHEET_ID).sheet1
 
 
-# -------------------- Email Setup --------------------
-email_cfg = {
-    "MAIL_SERVER": os.environ.get("MAIL_SERVER"),
-    "MAIL_PORT": int(os.environ.get("MAIL_PORT", 587)),
-    "MAIL_USE_TLS": os.environ.get("MAIL_USE_TLS", "true").lower() == "true",
-    "MAIL_USERNAME": os.environ.get("MAIL_USERNAME"),
-    "MAIL_PASSWORD": os.environ.get("MAIL_PASSWORD"),
-}
+# -------------------- Email Setup (Local vs Render) --------------------
+config_path = os.path.join(app.instance_path, "config.json")
+
+if os.environ.get("MAIL_SERVER"):  
+    # Running on Render (from environment variables)
+    email_cfg = {
+        "MAIL_SERVER": os.environ.get("MAIL_SERVER"),
+        "MAIL_PORT": int(os.environ.get("MAIL_PORT", 587)),
+        "MAIL_USE_TLS": os.environ.get("MAIL_USE_TLS", "true").lower() == "true",
+        "MAIL_USERNAME": os.environ.get("MAIL_USERNAME"),
+        "MAIL_PASSWORD": os.environ.get("MAIL_PASSWORD"),
+    }
+else:
+    # Running locally (read from config.json)
+    with open(config_path, "r") as f:
+        email_cfg = json.load(f)
 
 app.config.update(email_cfg)
 app.config["MAIL_DEFAULT_SENDER"] = ("Portfolio Contact", email_cfg["MAIL_USERNAME"])
 
 mail = Mail(app)
+
 
 # -------------------- Routes --------------------
 
