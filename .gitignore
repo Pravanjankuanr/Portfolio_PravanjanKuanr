@@ -26,3 +26,5 @@ Thumbs.db
 *.code-workspace
 
 credentials.json
+config.json
+n.md

@@ -1,0 +1,38 @@
+<div style="font-family: 'Segoe UI', Arial, sans-serif; background: #f4f7fa; padding: 30px;">
+<div style="max-width: 650px; margin: 0 auto; background: #ffffff; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); overflow: hidden;">
+    
+    <div style="background: linear-gradient(135deg, #38b2ac, #2c7a7b); padding: 20px; text-align: center; color: #fff;">
+        <h1 style="margin: 0; font-size: 24px;">New Contact Form Submission</h1>
+    </div>
+
+<div style="padding: 25px;">
+    <h2 style="color: #2d3748; font-size: 20px; margin-bottom: 20px;">
+        Submitted Details
+    </h2>
+    <hr style="border: 0; border-top: 2px solid #eaeaea; margin-bottom: 20px;">
+
+
+        <p style="font-size: 12px; line-height: 1.8;">
+            <b>Name:</b> {{ name }}<br>
+            <b>Email:</b> {{ email }}<br>
+            <b>Mobile:</b> {{ mobile }}<br>
+            <b>Subject:</b> {{ subject }}
+        </p>
+
+        <div style="margin-top: 20px; padding: 18px; background: #f7fafc; border-left: 5px solid #38b2ac; border-radius: 8px;">
+            <p style="margin:0; font-size: 12px; line-height: 1.8;">
+                {{ message }}
+            </p>
+        </div>
+
+        <p style="margin-top: 25px; font-size: 11px; color: #718096; text-align: center;">
+            Submitted on <b>{{ now }}</b>
+        </p>
+    </div>
+
+    <div style="background: #edf2f7; padding: 15px; text-align: center; font-size: 9px;">
+        <p>⚡ This message was sent via <b>Portfolio Contact Form.</b></p>
+        <p>© {{ current_year }} Pravanjan Kuanr</p>
+    </div>
+</div>
+</div>

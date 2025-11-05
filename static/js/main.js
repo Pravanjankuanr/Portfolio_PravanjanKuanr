@@ -5,36 +5,49 @@ DOM Ready
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Portfolio site loaded successfully!");
 
-  /* ========================
-     Contact Form Submission
-  ======================== */
-  const form = document.querySelector(".contact-form");
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
+/* ========================
+   Contact Form Submission
+======================== */
+const form = document.querySelector(".contact-form");
+const toast = document.getElementById("toast");
 
-      const btn = form.querySelector("button[type=submit]");
-      btn.disabled = true;
-      btn.innerText = "⏳ Sending...";
+if (form) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-      fetch("/contact", {
-        method: "POST",
-        body: new FormData(form),
+    const btn = form.querySelector("button[type=submit]");
+    btn.disabled = true;
+    btn.style.opacity = "0.6";
+
+    fetch("/contact", {
+      method: "POST",
+      body: new FormData(form),
+    })
+      .then((res) => res.text())
+      .then(() => {
+        showToast("✅ Message sent successfully!", "#0A8A46");
+        form.reset();
       })
-        .then((res) => res.text())
-        .then(() => {
-          alert("✅ Thank you for contacting me! I'll get back to you soon.");
-          form.reset();
-          btn.disabled = false;
-          btn.innerText = "Submit";
-        })
-        .catch(() => {
-          alert("❌ Something went wrong. Please try again.");
-          btn.disabled = false;
-          btn.innerText = "Submit";
-        });
-    });
-  }
+      .catch(() => {
+        showToast("❌ Something went wrong!", "#B80000");
+      })
+      .finally(() => {
+        btn.disabled = false;
+        btn.style.opacity = "1";
+      });
+  });
+}
+
+function showToast(message, bgColor) {
+  toast.textContent = message;
+  toast.style.background = bgColor;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3500);
+}
+
 
   /* ========================
      Copy Button for Code Blocks
