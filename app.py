@@ -32,7 +32,7 @@ if os.environ.get("GOOGLE_CREDENTIALS"):
     creds = Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
 else:
     # Running locally (use file)
-    creds = Credentials.from_service_account_file("instance\credentials.json", scopes=SCOPES)
+    creds = Credentials.from_service_account_file("instance/credentials.json", scopes=SCOPES)
 
 # Authorize client *after* creds is created
 client = gspread.authorize(creds)
