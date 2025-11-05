@@ -44,26 +44,29 @@ sheet = client.open_by_key(SHEET_ID).sheet1
 
 # -------------------- Email Setup (Local vs Render) --------------------
 
-if os.environ.get("MAIL_SERVER"):  
-    # Running on Render (from environment variables)
-    email_cfg = {
-        "MAIL_SERVER": os.environ.get("MAIL_SERVER"),
-        "MAIL_PORT": int(os.environ.get("MAIL_PORT", 587)),
-        "MAIL_USE_TLS": os.environ.get("MAIL_USE_TLS", "true").lower() == "true",
-        "MAIL_USERNAME": os.environ.get("MAIL_USERNAME"),
-        "MAIL_PASSWORD": os.environ.get("MAIL_PASSWORD"),
-    }
-else:
-    # Running locally (read from config.json)
-    config_path = os.path.join(app.instance_path, "config.json")
-    with open(config_path, "r") as f:
-        email_cfg = json.load(f)
+if os.getenv("MAIL_SERVER"):
+    app.config.update(
+        MAIL_SERVER=os.getenv("MAIL_SERVER"),
+        MAIL_PORT=int(os.getenv("MAIL_PORT", 587)),
+        MAIL_USE_TLS=os.getenv("MAIL_USE_TLS", "true").lower() == "true",
+        MAIL_USERNAME=os.getenv("MAIL_USERNAME"),
+        MAIL_PASSWORD=os.getenv("MAIL_PASSWORD"),
+        MAIL_DEFAULT_SENDER=("Portfolio Contact", os.getenv("MAIL_USERNAME"))
+    )
 
-app.config.update(email_cfg)
-app.config["MAIL_DEFAULT_SENDER"] = ("Portfolio Contact", email_cfg["MAIL_USERNAME"])
+else:
+    # Local dev: read config.json
+    config_path = os.path.join(app.root_path, "instance", "config.json")
+    try:
+        with open(config_path, "r") as f:
+            cfg = json.load(f)
+
+        app.config.update(cfg)
+        app.config["MAIL_DEFAULT_SENDER"] = ("Portfolio Contact", cfg["MAIL_USERNAME"])
+    except FileNotFoundError:
+        print("Bruh. config.json missing locally. Create instance/config.json.")
 
 mail = Mail(app)
-
 
 # -------------------- Routes --------------------
 
