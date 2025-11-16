@@ -92,6 +92,17 @@ print(f"   Username: {app.config.get('MAIL_USERNAME')}")
 print(f"   Password Set: {'Yes' if app.config.get('MAIL_PASSWORD') else 'No'}")
 print(f"   TLS: {app.config.get('MAIL_USE_TLS')}")
 
+# Improved async email function with error logging
+def send_async_email(app, msg):
+    with app.app_context():
+        try:
+            mail.send(msg)
+            print(f"✅ Email sent successfully to {msg.recipients}")
+        except Exception as e:
+            print(f"❌ Email send failed to {msg.recipients}: {str(e)}")
+            import traceback
+            traceback.print_exc()
+            
 # -------------------- Routes --------------------
 
 @app.route('/')
@@ -153,6 +164,7 @@ def contact():
         except Exception as e:
             print(f"❌ Sheet Error: {e}")
 
+        # SYNCHRONOUS EMAIL SENDING FOR DEBUGGING
         try:
             # Email to you
             msg = Message(
@@ -165,6 +177,11 @@ def contact():
                 message=message, now=now, current_year=datetime.now().year
             )
 
+            # Send admin email synchronously
+            print(f"📤 Attempting to send admin email to {app.config['MAIL_USERNAME']}")
+            mail.send(msg)
+            print(f"✅ Admin email sent successfully")
+
             # Auto reply
             auto_reply = Message(
                 "✅ Thanks for contacting me!",
@@ -174,15 +191,18 @@ def contact():
                 "email/auto_reply.html",
                 name=name
             )
-
-            threading.Thread(target=send_async_email, args=(app, msg)).start()
-            threading.Thread(target=send_async_email, args=(app, auto_reply)).start()
             
-            print(f"✅ Emails queued for {email}")
+            # Send auto-reply synchronously
+            print(f"📤 Attempting to send auto-reply to {email}")
+            mail.send(auto_reply)
+            print(f"✅ Auto-reply sent successfully to {email}")
+            
             flash("✅ Your message has been sent successfully!", "success")
 
         except Exception as e:
-            print(f"❌ Email Failed: {e}")
+            print(f"❌ Email Failed: {str(e)}")
+            import traceback
+            traceback.print_exc()
             flash("⚠️ Message saved, but failed to send email. Try again later.", "error")
 
         return redirect(url_for('contact'))
