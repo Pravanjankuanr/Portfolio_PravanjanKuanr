@@ -7,6 +7,8 @@ import smtplib
 from pathlib import Path
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify, send_from_directory
 from datetime import datetime
+import pytz
+IST = pytz.timezone('Asia/Kolkata') # Indian timezone
 
 # Google Sheets
 import gspread
@@ -69,6 +71,14 @@ else:
 
 mail = Mail(app)
 
+# Debug email config on Render
+print("📧 Email Config:")
+print(f"   Server: {app.config.get('MAIL_SERVER')}")
+print(f"   Port: {app.config.get('MAIL_PORT')}")
+print(f"   Username: {app.config.get('MAIL_USERNAME')}")
+print(f"   Password Set: {'Yes' if app.config.get('MAIL_PASSWORD') else 'No'}")
+print(f"   TLS: {app.config.get('MAIL_USE_TLS')}")
+
 # -------------------- Routes --------------------
 
 @app.route('/')
@@ -119,10 +129,16 @@ def contact():
         mobile = request.form.get('mobile', '').strip()
         subject = request.form.get('subject', '').strip()
         message = request.form.get('message', '').strip()
-        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        # FIX: Use IST timezone
+        now = datetime.now(pytz.utc).astimezone(IST).strftime("%Y-%m-%d %H:%M:%S")
 
-        # Save to Google Sheets
-        sheet.append_row([now, name, email, mobile, subject, message])
+        # FIX: Add error handling for Google Sheets
+        try:
+            sheet.append_row([now, name, email, mobile, subject, message])
+            print(f"✅ Saved to sheet at {now}")
+        except Exception as e:
+            print(f"❌ Sheet Error: {e}")
 
         try:
             # Email to you
@@ -148,11 +164,12 @@ def contact():
 
             threading.Thread(target=send_async_email, args=(app, msg)).start()
             threading.Thread(target=send_async_email, args=(app, auto_reply)).start()
-
+            
+            print(f"✅ Emails queued for {email}")
             flash("✅ Your message has been sent successfully!", "success")
 
         except Exception as e:
-            print("Email Failed:", e)
+            print(f"❌ Email Failed: {e}")
             flash("⚠️ Message saved, but failed to send email. Try again later.", "error")
 
         return redirect(url_for('contact'))
