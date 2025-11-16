@@ -62,8 +62,9 @@ if app_config:
 elif os.getenv("MAIL_SERVER"):
     app.config.update(
         MAIL_SERVER=os.getenv("MAIL_SERVER"),
-        MAIL_PORT=int(os.getenv("MAIL_PORT", 587)),
-        MAIL_USE_TLS=os.getenv("MAIL_USE_TLS", "true").lower() == "true",
+        MAIL_PORT=int(os.getenv("MAIL_PORT", 465)),
+        MAIL_USE_TLS=os.getenv("MAIL_USE_TLS", "false").lower() == "true",
+        MAIL_USE_SSL=os.getenv("MAIL_USE_SSL", "true").lower() == "true",
         MAIL_USERNAME=os.getenv("MAIL_USERNAME"),
         MAIL_PASSWORD=os.getenv("MAIL_PASSWORD"),
         MAIL_DEFAULT_SENDER=("Portfolio Contact", os.getenv("MAIL_USERNAME"))
