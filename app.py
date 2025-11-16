@@ -47,7 +47,19 @@ sheet = client.open_by_key(SHEET_ID).sheet1
 
 # -------------------- Email Setup (Local vs Render) --------------------
 
-if os.getenv("MAIL_SERVER"):
+# Try reading from APP_CONFIG first (if it's JSON in environment)
+app_config = os.getenv("APP_CONFIG")
+if app_config:
+    try:
+        cfg = json.loads(app_config)
+        app.config.update(cfg)
+        app.config["MAIL_DEFAULT_SENDER"] = ("Portfolio Contact", cfg["MAIL_USERNAME"])
+        print("📧 Using APP_CONFIG from environment")
+    except Exception as e:
+        print(f"⚠️ Failed to parse APP_CONFIG: {e}")
+
+# Check for individual env vars (these override APP_CONFIG if present)
+elif os.getenv("MAIL_SERVER"):
     app.config.update(
         MAIL_SERVER=os.getenv("MAIL_SERVER"),
         MAIL_PORT=int(os.getenv("MAIL_PORT", 587)),
@@ -56,22 +68,23 @@ if os.getenv("MAIL_SERVER"):
         MAIL_PASSWORD=os.getenv("MAIL_PASSWORD"),
         MAIL_DEFAULT_SENDER=("Portfolio Contact", os.getenv("MAIL_USERNAME"))
     )
+    print("📧 Using individual MAIL_* environment variables")
 
+# Local dev: read config.json
 else:
-    # Local dev: read config.json
     config_path = os.path.join(app.root_path, "instance", "config.json")
     try:
         with open(config_path, "r") as f:
             cfg = json.load(f)
-
         app.config.update(cfg)
         app.config["MAIL_DEFAULT_SENDER"] = ("Portfolio Contact", cfg["MAIL_USERNAME"])
+        print("📧 Using local config.json")
     except FileNotFoundError:
-        print("Bruh. config.json missing locally. Create instance/config.json.")
+        print("❌ No email config found!")
 
 mail = Mail(app)
 
-# Debug email config on Render
+# Debug email config
 print("📧 Email Config:")
 print(f"   Server: {app.config.get('MAIL_SERVER')}")
 print(f"   Port: {app.config.get('MAIL_PORT')}")
