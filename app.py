@@ -121,6 +121,10 @@ def docs():
 def sql_tutorials():
     return render_template("sql_tutorials.html")
 
+@app.route("/projects/sales-dashboard")
+def sales_dashboard():
+    return render_template("sales_dashboard.html")
+
 @app.route("/docs/insuranceapp")
 def insurance_app():
     return render_template("insurance_app.html")

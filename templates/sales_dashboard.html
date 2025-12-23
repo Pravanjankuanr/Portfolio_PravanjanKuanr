@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="project-hero">
+  <div class="container">
+    <h1>Sales Dashboard</h1>
+    <p>End-to-end sales analysis project using Power BI and CSV data</p>
+  </div>
+</section>
+
+<section class="project-details dark-pro">
+  <div class="container">
+
+    <!-- README SECTION -->
+    <div class="readme-box">
+      <h2>Project Overview</h2>
+      <p>
+        This project analyzes sales performance across months using structured CSV data.
+        The dashboard focuses on revenue trends, order volume, and average order value.
+      </p>
+
+      <h3>Tools Used</h3>
+      <ul>
+        <li>Power BI</li>
+        <li>CSV Data</li>
+        <li>Python (Data Cleaning)</li>
+      </ul>
+
+      <h3>Key Insights</h3>
+      <ul>
+        <li>Revenue increased steadily after March</li>
+        <li>Highest sales observed in June</li>
+        <li>Average order value remained stable</li>
+      </ul>
+    </div>
+
+    <!-- KPI -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <h3>Total Revenue</h3>
+        <p>₹12.5L</p>
+      </div>
+      <div class="kpi-card">
+        <h3>Total Orders</h3>
+        <p>1,248</p>
+      </div>
+      <div class="kpi-card">
+        <h3>Avg Order Value</h3>
+        <p>₹1,002</p>
+      </div>
+    </div>
+
+    <!-- POWER BI SCREENSHOT -->
+    <h2>Dashboard Preview</h2>
+    <div class="dashboard-image">
+      <img src="{{ url_for('static', filename='images/sales_dashboard.png') }}"
+           alt="Sales Dashboard Screenshot">
+    </div>
+
+    <!-- POWER BI LINK -->
+    <div class="dashboard-actions">
+      <!-- If Power BI gives you Embed link, remove below line this part: -->
+      <a href="https://app.powerbi.com/" target="_blank" class="btn"> 
+      <!-- <iframe
+        src="PASTE_POWER_BI_EMBED_LINK_HERE"
+        width="100%"
+        height="600"
+        frameborder="0"
+        allowfullscreen>
+      </iframe> -->
+        Open Power BI Dashboard
+      </a>
+
+      <a href="{{ url_for('static', filename='data/sales_data.csv') }}"
+         download
+         class="btn secondary">
+        Download CSV Data
+      </a>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}
+
+{% block page_js %}
+<script src="{{ url_for('static', filename='js/sales_dashboard.js') }}"></script>
+{% endblock %}

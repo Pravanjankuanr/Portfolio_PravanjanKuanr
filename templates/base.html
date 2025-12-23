@@ -4,39 +4,64 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pravanjan Kuanr | Portfolio</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/styles.css') }}"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-papE1B6NHq1F0hH0R+O5rWvOqD1lNR+fO/0yjF5hztm6H1xI+3P5QFJ/9Vd8ZCqHhX/4+u4Cpl9Mjl5zSvrxQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
     <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
   </head>
+
   <body>
-    
-    <!-- ✅ Toast Notification (sliding success message) -->
+    <!-- Toast Notification -->
     <div id="toast" class="toast"></div>
 
+    <!-- Header / Navbar -->
     <header>
       <nav class="navbar">
-        <h2 class="logo">Pravanjan Kuanr</h2>
+        <h1 class="logo">Pravanjan Kuanr</h1>
 
         <!-- Hamburger Button -->
-        <div class="menu-toggle" id="menu-toggle">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
           <span></span>
           <span></span>
           <span></span>
-        </div>
+        </button>
 
         <ul class="nav-links" id="nav-links">
           <li><a href="{{ url_for('home') }}">Home</a></li>
           <li><a href="{{ url_for('projects') }}">Projects</a></li>
           <li><a href="{{ url_for('contact') }}">Contact</a></li>
           <li><a href="{{ url_for('docs') }}">Docs</a></li>
+
+          <!-- Dark / Light Mode Toggle -->
+          <li>
+            <div class="theme-switch-wrapper">
+              <label class="theme-switch">
+                <input type="checkbox" id="theme-toggle" aria-label="Toggle dark/light mode">
+                <span class="slider">
+                  <i class="fas fa-sun sun-icon"></i>
+                  <i class="fas fa-moon moon-icon"></i>
+                </span>
+              </label>
+            </div>
+          </li>
         </ul>
       </nav>
     </header>
 
+    <!-- Main Content -->
     <main>{% block content %}{% endblock %}</main>
 
+    <!-- Footer -->
     <footer>
       <p>© 2025 Pravanjan Kuanr | Data Analyst Portfolio</p>
     </footer>
