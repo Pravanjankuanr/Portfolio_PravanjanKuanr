@@ -92,6 +92,8 @@ p {font-size: 16px;}
   transition: color 0.3s;
 }
 
+/* # This is is added */
+
 .nav-links a:hover {
   color: #f39c12;
 }
