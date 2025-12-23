@@ -92,8 +92,6 @@ p {font-size: 16px;}
   transition: color 0.3s;
 }
 
-/* # This is is added */
-
 .nav-links a:hover {
   color: #f39c12;
 }
@@ -1279,14 +1277,6 @@ body.dark-mode .readme-box {
 /* ======================
    Timeline
 ====================== */
-body.dark-mode .timeline::before {
-  background: #38bdf8;
-}
-
-body.dark-mode .timeline-item::before {
-  background: #38bdf8;
-  box-shadow: 0 0 10px #38bdf8, 0 0 20px #38bdf8;
-}
 
 body.dark-mode .timeline-content {
   background: #1f2937;
@@ -1327,17 +1317,6 @@ body.dark-mode .sidebar a.active {
   color: #fff;
 }
 
-/* ======================
-   Buttons
-====================== */
-body.dark-mode .btn {
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
-  color: #fff;
-}
-
-body.dark-mode .btn:hover {
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
-}
 
 /* ======================
    Footer
