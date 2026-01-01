@@ -1596,6 +1596,33 @@ body.dark-mode footer {
 }
 
 .slider {
+  position: relative;
+  overflow: hidden;  
+}
+
+.sun-icon,
+.moon-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+
+.sun-icon {
+  left: 7px;
+  color: #facc15;
+}
+
+.moon-icon {
+  right: 8px;
+  color: #1e293b; /* dark blue */
+}
+
+
+.slider {
   position: absolute;
   display: flex;
   align-items: center;
@@ -1620,5 +1647,5 @@ body.dark-mode footer {
 }
 
 .theme-switch input:checked + .slider::before {
-  transform: translateX(30px);
+  transform: translateX(25px);
 }
