@@ -51,6 +51,12 @@ p {font-size: 16px;}
   color: #191919;
 }
 
+
+body.dark-mode .navbar .logo {
+  color: #f8fafc;
+}
+
+
 /* Menu Toggle (Hamburger) */
 .menu-toggle {
   display: none;
@@ -1201,28 +1207,31 @@ pre code {
 }
 
 /* ======================
-   Professional Dark Theme (Sales Dashboard)
+   SALES DASHBOARD – BASE
 ====================== */
 
-/* ======================
-   Dark Section Wrapper
-====================== */
+/* Hero + Page Wrapper */
 .project-hero,
 .dark-pro {
-  padding: 60px 0;
-  background: linear-gradient(180deg, #0b1220 0%, #0e1627 50%, #111827 100%);
+  padding: 12px 0;
+  background: #f0f9ff;
   text-align: center;
 }
 
+body.dark-mode .project-hero h1,
+body.dark-mode .project-hero p {
+  color: #0b1220;
+}
+
+
 /* ======================
-   Dark Mode Base
+   DARK MODE BASE
 ====================== */
 body.dark-mode {
   background: #0b1220;
-  color: #e5e7eb; /* base text only */
+  color: #e5e7eb;
 }
 
-/* Headings ONLY in dark mode */
 body.dark-mode h1,
 body.dark-mode h2,
 body.dark-mode h3 {
@@ -1230,7 +1239,32 @@ body.dark-mode h3 {
 }
 
 /* ======================
-   KPI Grid & Cards
+   SALES SECTION CARD
+====================== */
+.sales-section {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 30px;
+  margin: 30px auto;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.06),
+    0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.sales-section:hover {
+  transform: translateY(-2px);
+}
+
+body.dark-mode .sales-section {
+  background: #0f172a;
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+/* ======================
+   KPI GRID
 ====================== */
 .kpi-grid {
   display: grid;
@@ -1251,8 +1285,13 @@ body.dark-mode .kpi-card p {
 }
 
 /* ======================
-   Dashboard Frame / Image
+   DASHBOARD IMAGE
 ====================== */
+.dashboard-image img {
+  max-width: 100%;
+  border-radius: 12px;
+}
+
 body.dark-mode .dashboard-frame,
 body.dark-mode .dashboard-image {
   background: linear-gradient(180deg, #0f172a, #0b1220);
@@ -1260,13 +1299,8 @@ body.dark-mode .dashboard-image {
   box-shadow: 0 12px 30px rgba(0,0,0,0.45);
 }
 
-.dashboard-image img {
-  max-width: 100%;
-  border-radius: 12px;
-}
-
 /* ======================
-   README Box
+   README BOX
 ====================== */
 body.dark-mode .readme-box {
   background: linear-gradient(180deg, #0f172a, #0b1220);
@@ -1275,13 +1309,227 @@ body.dark-mode .readme-box {
 }
 
 /* ======================
-   Timeline
+   TIMELINE (DARK ONLY)
 ====================== */
-
 body.dark-mode .timeline-content {
   background: #1f2937;
   color: #e5e7eb;
 }
+
+/* ======================
+   PROJECT FLOW (Auto width + Equal height)
+====================== */
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 6px;
+}
+
+.section-subtitle,
+.overview-subtitle {
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 30px;
+  font-size: 1rem;
+}
+
+/* Grid auto-adjusts when steps are added/removed */
+.flow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  align-items: stretch;   /* equal height */
+}
+
+/* Flow cards */
+.flow-step {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.flow-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.flow-step h4 {
+  margin: 6px 0 4px;
+  font-size: 1.1rem;
+}
+
+.flow-step p {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0;
+}
+
+/* Arrow (optional if you still use it) */
+.flow-arrow {
+  display: none; /* grid replaces arrows visually */
+}
+
+/* ======================
+   Dark Mode
+====================== */
+
+body.dark-mode .flow-step {
+  background: #0f172a;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .flow-step p {
+  color: #cbd5f5;
+}
+
+
+/* ======================
+   TOOLS & INSIGHTS
+====================== */
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.overview-card {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  max-width: 900px;
+  margin: 0 auto; 
+}
+
+/* CENTER THE HEADERS */
+.overview-card h3 {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+/* Dark mode card */
+body.dark-mode .overview-card {
+  background: #0f172a;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* ======================
+   Tools (logo style)
+====================== */
+.tools-logos {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center; /* centers logos nicely */
+  margin: 24px auto 32px;
+}
+
+.tool-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.tool-item img {
+  height: 48px;
+  transition: transform 0.3s ease;
+}
+
+.tool-item img:hover {
+  transform: scale(1.08);
+}
+
+.tool-item span {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #475569;
+}
+
+body.dark-mode .tool-item span {
+  color: #cbd5f5;
+}
+
+/* ======================
+   Key Insights (no box)
+====================== */
+.key-insights {
+  margin-top: 16px;
+  padding-left: 22px;      /* proper bullet alignment */
+  text-align: left;        /* THIS is the key */
+  max-width: 700px;        /* keeps it neat */
+  margin-left: 10px;
+  margin-right: auto;      /* centers the block, not the text */
+}
+
+.key-insights li {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+
+body.dark-mode .key-insights li {
+  color: #e5e7eb;
+}
+
+
+/* ======================
+   KPI Cards – Light Mode
+====================== */
+.kpi-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 22px;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* KPI title */
+.kpi-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #475569; /* same tone as flow-step text */
+  margin-bottom: 8px;
+}
+
+/* KPI value */
+.kpi-card p {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0f172a; /* strong but not pure black */
+  margin: 0;
+}
+
+body.dark-mode .kpi-card {
+  background: linear-gradient(180deg, #111827, #0b1220);
+  border: 1px solid #1f2937;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+body.dark-mode .kpi-card p {
+  color: #38bdf8;
+}
+
+
 
 /* ======================
    Docs Content Boxes
@@ -1304,7 +1552,7 @@ body.dark-mode .doccontentbox h4 {
 ====================== */
 body.dark-mode .navbar,
 body.dark-mode .sidebar {
-  background: #111827;
+  background: #313e59;
 }
 
 body.dark-mode .nav-links a,

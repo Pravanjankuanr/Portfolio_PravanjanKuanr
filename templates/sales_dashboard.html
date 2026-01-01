@@ -13,72 +13,137 @@
 <section class="project-details dark-pro">
   <div class="container">
 
-    <!-- README SECTION -->
-    <div class="readme-box">
-      <h2>Project Overview</h2>
-      <p>
-        This project analyzes sales performance across months using structured CSV data.
-        The dashboard focuses on revenue trends, order volume, and average order value.
-      </p>
+    <!-- PROJECT OVERVIEW -->
+    <section class="sales-section">
+      <div class="readme-box">
 
-      <h3>Tools Used</h3>
-      <ul>
-        <li>Power BI</li>
-        <li>CSV Data</li>
-        <li>Python (Data Cleaning)</li>
-      </ul>
+        <h2>Project Overview</h2>
+        <p class="overview-subtitle">
+          From raw sales data to interactive Power BI insights
+        </p>
 
-      <h3>Key Insights</h3>
-      <ul>
-        <li>Revenue increased steadily after March</li>
-        <li>Highest sales observed in June</li>
-        <li>Average order value remained stable</li>
-      </ul>
-    </div>
+        <!-- FLOW -->
+        <div class="flow-grid">
+          <div class="flow-step">
+            <span class="flow-icon">📄</span>
+            <h4>Raw Data</h4>
+            <p>Monthly CSV sales files</p>
+          </div>
 
-    <!-- KPI -->
-    <div class="kpi-grid">
-      <div class="kpi-card">
-        <h3>Total Revenue</h3>
-        <p>₹12.5L</p>
+          <div class="flow-step">
+            <span class="flow-icon">🧹</span>
+            <h4>Data Cleaning</h4>
+            <p>Python preprocessing</p>
+          </div>
+
+          <div class="flow-step">
+            <span class="flow-icon">🔄</span>
+            <h4>Transformation</h4>
+            <p>Pandas validation</p>
+          </div>
+          <div class="flow-step">
+            <span class="flow-icon">🔄</span>
+            <h4>Stuctured data</h4>
+            <p>Pandas validation</p>
+          </div>
+
+
+          <div class="flow-step">
+            <span class="flow-icon">📊</span>
+            <h4>Power BI</h4>
+            <p>KPIs & Insights</p>
+          </div>
+        </div>
+
+        <!-- TOOLS -->
+        <h3 class="section-title">Tools Used</h3>
+        <div class="tools-logos">
+          <div class="tool-item">
+            <img src="{{ url_for('static', filename='images/powerbi.png') }}">
+            <span>Power BI</span>
+          </div>
+          <div class="tool-item">
+            <img src="{{ url_for('static', filename='images/python.png') }}">
+            <span>Python</span>
+          </div>
+          <div class="tool-item">
+            <img src="{{ url_for('static', filename='images/excel.png') }}">
+            <span>CSV</span>
+          </div>
+        </div>
+
+        <!-- INSIGHTS -->
+        <h3 class="section-title">Key Insights</h3>
+        <ul class="key-insights">
+          <li>📈 Revenue increased steadily after March</li>
+          <li>🔥 June had the highest sales</li>
+          <li>🧾 Stable AOV with growing volume</li>
+          <li>🎯 Growth without heavy discounting</li>
+          <li>🎯 Growth without heavy discounting</li>
+          <li>🎯 Growth without heavy discounting</li>
+
+        </ul>
+
       </div>
-      <div class="kpi-card">
-        <h3>Total Orders</h3>
-        <p>1,248</p>
+    </section>
+
+
+    <!-- KPI SECTION -->
+    <section class="sales-section">
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <h3>Total Revenue</h3>
+          <p>₹12.5L</p>
+        </div>
+        <div class="kpi-card">
+          <h3>Total Orders</h3>
+          <p>1,248</p>
+        </div>
+                <div class="kpi-card">
+          <h3>Total Orders</h3>
+          <p>1,248</p>
+        </div>
+                <div class="kpi-card">
+          <h3>Total Orders</h3>
+          <p>1,248</p>
+        </div>
+        <div class="kpi-card">
+          <h3>Avg Order Value</h3>
+          <p>₹1,002</p>
+        </div>
       </div>
-      <div class="kpi-card">
-        <h3>Avg Order Value</h3>
-        <p>₹1,002</p>
+    </section>
+
+    <!-- DASHBOARD IMAGE -->
+    <section class="sales-section">
+      <h2>Dashboard Preview</h2>
+      <div class="dashboard-image">
+        <img src="{{ url_for('static', filename='images/sales_dashboard.png') }}">
       </div>
-    </div>
+    </section>
 
-    <!-- POWER BI SCREENSHOT -->
-    <h2>Dashboard Preview</h2>
-    <div class="dashboard-image">
-      <img src="{{ url_for('static', filename='images/sales_dashboard.png') }}"
-           alt="Sales Dashboard Screenshot">
-    </div>
+    <!-- ACTIONS -->
+    <section class="sales-section">
+      <h2>Links</h2>
+      <div class="dashboard-actions">
+        <a href="https://app.powerbi.com/" target="_blank" class="btn">
+          Power BI Dashboard
+        </a>
 
-    <!-- POWER BI LINK -->
-    <div class="dashboard-actions">
-      <!-- If Power BI gives you Embed link, remove below line this part: -->
-      <a href="https://app.powerbi.com/" target="_blank" class="btn"> 
-      <!-- <iframe
-        src="PASTE_POWER_BI_EMBED_LINK_HERE"
-        width="100%"
-        height="600"
-        frameborder="0"
-        allowfullscreen>
-      </iframe> -->
-        Open Power BI Dashboard
-      </a>
+        <a href="{{ url_for('static', filename='data/sales_data.csv') }}"
+           download
+           class="btn secondary">
+          Download CSV Data
+        </a>
 
-      <a href="{{ url_for('static', filename='data/sales_data.csv') }}"
-         download
-         class="btn secondary">
-        Download CSV Data
-      </a>
-    </div>
+        
+        <a href="{{ url_for('static', filename='data/sales_data.csv') }}"
+           download
+           class="btn secondary">
+          GitHub
+        </a>
+      </div>
+    </section>
 
   </div>
 </section>
