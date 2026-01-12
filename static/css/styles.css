@@ -1468,14 +1468,14 @@ body.dark-mode .tool-item span {
   margin-top: 16px;
   padding-left: 22px;      /* proper bullet alignment */
   text-align: left;        /* THIS is the key */
-  max-width: 700px;        /* keeps it neat */
+  max-width: auto;        /* keeps it neat */
   margin-left: 10px;
   margin-right: auto;      /* centers the block, not the text */
 }
 
 .key-insights li {
   margin-bottom: 10px;
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.5;
 }
 
