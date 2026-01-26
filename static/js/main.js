@@ -123,6 +123,35 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   );
 
+  const sidebar = document.querySelector(".sidebar");
+const wrapper = document.querySelector(".sidebar-wrapper");
+const docSection = document.querySelector(".doc_content");
+
+function updateSidebar(){
+  if(!sidebar || !wrapper || !docSection) return;
+
+  const sidebarHeight = sidebar.offsetHeight;
+  const start = docSection.offsetTop;
+  const end = start + docSection.offsetHeight - sidebarHeight;
+
+  const scrollY = window.scrollY;
+
+  if(scrollY < start){
+    sidebar.style.position = "absolute";
+    sidebar.style.top = "0px";
+  }
+  else if(scrollY > end){
+    sidebar.style.position = "absolute";
+    sidebar.style.top = (end - start) + "px";
+  }
+  else{
+    sidebar.style.position = "fixed";
+    sidebar.style.top = "20px";
+  }
+}
+
+window.addEventListener("scroll", updateSidebar);
+window.addEventListener("load", updateSidebar);
   /* ================================
      Navbar Hamburger
   ================================ */

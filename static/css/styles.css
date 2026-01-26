@@ -748,6 +748,7 @@ footer {
   background: #f9fafb; /* light gray background */
   font-family: 'Aptos', 'Cambria',Arial, sans-serif;
   color: #333;
+  align-items: flex-start;
   line-height: 1.6;
 }
 
@@ -791,7 +792,8 @@ footer {
 .doccontentbox p {
   margin-bottom: 0.3rem;
   font-size: 17px;
-  line-height: 1.4; 
+  line-height: 1.4;
+  text-align: center;
 }
 
 .doccontentbox b {
@@ -872,8 +874,18 @@ pre code {
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
   height: fit-content;
-  position: sticky;
-  top: 80px; /* stays fixed while scrolling */
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 80px;
+  height: fit-content;
+  align-self: flex-start;
+}
+
+.sidebar-wrapper{
+  position: relative;
+  width:220px;
+  flex-shrink:0;
 }
 
 .sidebar h3 {
@@ -920,6 +932,8 @@ pre code {
 /* ===== Main Content Area ===== */
 .content-area {
   flex: 1;
+  position: sticky;
+  left: 20%;
   max-width: 900px;
 }
 
