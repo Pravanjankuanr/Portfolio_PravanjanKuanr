@@ -793,16 +793,24 @@ footer {
   margin-bottom: 0.3rem;
   font-size: 17px;
   line-height: 1.4;
-  text-align: center;
 }
 
 .doccontentbox b {
   margin-bottom: 0.90rem;
   font-size: 17px;
 }
+.doccontentbox .welcome {
+  margin-bottom: 0.3rem;
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  font-family: 'Cambria';
+}
+
 
 .doccontentbox span{
     font-size: 16px;
+    
 }
 
 .doccontentbox .run-guide{
