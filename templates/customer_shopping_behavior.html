@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="project-hero">
+  <div class="container">
+    <h1>Customer  Shopping Behavior</h1>
+    <p>Sales Data Analysis using Power BI for one of India’s leading startup</p>
+  </div>
+</section>
+
+<section class="project-details dark-pro">
+  <div class="container">
+
+    <!-- PROJECT OVERVIEW -->
+    <section class="sales-section">
+      <div class="readme-box">
+
+        <h2>Project Overview</h2>
+        <p class="overview-subtitle">
+        Step-by-step sales data transformation—from raw CSV files to interactive Power BI dashboards
+        </p>
+
+        <!-- FLOW -->
+        <div class="flow-grid">
+          <div class="flow-step">
+            <span class="flow-icon">📄</span>
+            <h4>Raw Data</h4>
+            <p>CSV sales files</p>
+          </div>
+
+          <div class="flow-step">
+            <span class="flow-icon">🧹</span>
+            <h4>Data Cleaning</h4>
+            <p>Data cleaning using Power Query</p>
+          </div>
+
+          <div class="flow-step">
+            <span class="flow-icon">🔄</span>
+            <h4>Transformation</h4>
+            <p>Create meaningful and insightful columns</p>
+          </div>
+          <div class="flow-step">
+            <span class="flow-icon">📥</span>
+            <h4>Load into Power BI</h4>
+            <p>Load data into Power BI and create DAX measures for insightful visuals</p>
+          </div>
+
+
+          <div class="flow-step">
+            <span class="flow-icon">📊</span>
+            <h4>Dashboard</h4>
+            <p>Showcasing KPIs and insights aligned with business needs</p>
+          </div>
+        </div>
+
+        <!-- TOOLS -->
+        <h3 class="section-title">Tools Used</h3>
+        <div class="tools-logos">
+          <div class="tool-item">
+            <img src="{{ url_for('static', filename='images/powerbi.png') }}">
+            <span>Power BI</span>
+          </div>
+          <div class="tool-item">
+            <img src="{{ url_for('static', filename='images/python.png') }}">
+            <span>Python</span>
+          </div>
+          <div class="tool-item">
+            <img src="{{ url_for('static', filename='images/excel.png') }}">
+            <span>CSV</span>
+          </div>
+        </div>
+
+        <!-- INSIGHTS -->
+        <h3 class="section-title">Key Insights</h3>
+        <ul class="key-insights">
+          <li><strong>Strong overall performance:</strong>Total sales reached $1.20M, indicating healthy demand across outlets.</li>
+          <li><strong>Supermarket Type 1 dominates:</strong>It contributes the highest sales (~$787K) and item volume, making it the most profitable outlet type.</li>
+          <li><strong>Top-performing categories:</strong>Fruits & Vegetables and Snack Foods are the highest revenue–generating item types (≈ $0.18M each).</li>
+          <li><strong>Medium-sized outlets lead sales:</strong>Medium outlets generate the highest revenue (~$508K), outperforming small and large formats.</li>
+          <li><strong>Tier 3 locations perform best:</strong>Tier 3 outlets record the highest sales (472K), showing strong demand beyond metro areas.</li>
+          <li><strong>Consistent customer satisfaction:</strong>Average rating remains stable at 4.0 across all outlet types.</li>
+          <li><strong>Low-fat products outperform:</strong>Low-fat items contribute more sales than regular items, reflecting a shift toward healthier choices.</li>
+
+        </ul>
+
+      </div>
+    </section>
+
+
+    <!-- KPI SECTION -->
+    <section class="sales-section">
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <h3>Total Revenue</h3>
+          <p>$1.20M</p>
+        </div>
+        <div class="kpi-card">
+          <h3>No of Items</h3>
+          <p>9K</p>
+        </div>
+        <div class="kpi-card">
+          <h3>Avg. Rating</h3>
+          <p>🌟🌟🌟🌟</p>
+        </div>
+        <div class="kpi-card">
+          <h3>Avg. Sales</h3>
+          <p>141</p>
+        </div>
+        <!-- <div class="kpi-card">
+          <h3>Avg Order Value</h3>
+          <p>₹1,002</p>
+        </div> -->
+      </div>
+    </section>
+
+    <!-- DASHBOARD IMAGE -->
+    <section class="sales-section">
+      <h2>Dashboard Preview</h2>
+      <div class="dashboard-image">
+        <img src="{{ url_for('static', filename='images/BlinkIT_Dashboard.jpg') }}">
+      </div>
+    </section>
+
+    <!-- ACTIONS -->
+    <section class="sales-section">
+      <h2>Links</h2>
+      <div class="dashboard-actions">
+        <!-- <a href="https://app.powerbi.com/" target="_blank" class="btn">
+          Power BI Dashboard
+        </a> -->
+        <a href="#" class="btn open-tutorial-btn" target="_blank" class="btn">
+          Power BI Dashboard
+        </a>
+<!-- <a href="{{ url_for('static', filename='data/sales_data.csv') }}" class="btn open-tutorial-btn" -->
+        <a href="#" class="btn open-tutorial-btn"
+           download
+           class="btn secondary">
+          Download CSV Data
+        </a>
+
+        
+        <a href="https://github.com/Pravanjankuanr/Blinkit-Data-Analysis" target="_blank"
+           download
+           class="btn secondary">
+          GitHub
+        </a>
+      </div>
+    </section>
+
+  </div>
+</section>
+
+{% endblock %}
+
+{% block page_js %}
+<script src="{{ url_for('static', filename='js/sales_dashboard.js') }}"></script>
+{% endblock %}

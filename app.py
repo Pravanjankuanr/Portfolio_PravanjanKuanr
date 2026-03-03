@@ -125,6 +125,10 @@ def sql_tutorials():
 def sales_dashboard():
     return render_template("sales_dashboard.html")
 
+@app.route("/projects/customer_shopping_behavior")
+def customer_shopping_behavior():
+    return render_template("customer_shopping_behavior.html")
+
 @app.route("/docs/insuranceapp")
 def insurance_app():
     return render_template("insurance_app.html")
