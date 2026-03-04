@@ -1451,10 +1451,11 @@ body.dark-mode .overview-card {
 .tools-logos {
   display: flex;
   gap: 30px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
-  justify-content: center; /* centers logos nicely */
+  justify-content: center;
   margin: 24px auto 32px;
+  overflow-x:auto;
 }
 
 .tool-item {
@@ -1465,7 +1466,7 @@ body.dark-mode .overview-card {
 }
 
 .tool-item img {
-  height: 48px;
+  height: 55px;
   transition: transform 0.3s ease;
 }
 
