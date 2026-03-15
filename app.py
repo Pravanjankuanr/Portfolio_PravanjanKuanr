@@ -129,6 +129,10 @@ def sales_dashboard():
 def customer_shopping_behavior():
     return render_template("customer_shopping_behavior.html")
 
+@app.route("/projects/sales_performance")
+def sales_performance():
+    return render_template("sales_performance.html")
+
 @app.route("/docs/insuranceapp")
 def insurance_app():
     return render_template("insurance_app.html")
